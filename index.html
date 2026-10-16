@@ -7,46 +7,127 @@
 <meta name="description" content="Free, open-source Windows apps by Erik1028: OrbitOverlay, VR Gallery and Mixtape.">
 <meta property="og:title" content="Erik1028's apps">
 <meta property="og:description" content="Free, open-source Windows apps: OrbitOverlay, VR Gallery and Mixtape.">
-<meta name="theme-color" content="#121318">
-<link rel="icon" href="https://erik1028.github.io/OrbitOverlay/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="https://erik1028.github.io/og.png">
+<meta property="og:url" content="https://erik1028.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101116">
+<link rel="icon" href="img/orbitoverlay.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/permanent-marker.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* A plain index of the apps: each row wears its own app's accent, so the page is the three of them side by side. */
+/* An index of three apps. Each card shows the thing itself (the watch over a VR floor, a wall of VRChat photos,
+   a hand-labelled tape) in its own app's accent; the page around them stays quiet. */
+@font-face{font-family:"Permanent Marker";src:url(fonts/permanent-marker.woff2) format("woff2");font-display:swap}
 :root{
   color-scheme:dark;
-  --bg:#121318; --line:#262832; --text:#eceef3; --dim:#9a9fae;
+  --bg:#101116; --card:#17181f; --line:#262833; --text:#eceef4; --dim:#9aa0b0;
   --sans:"Segoe UI Variable Text","Segoe UI Variable","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
   --display:"Segoe UI Variable Display","Segoe UI Variable","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --hand:"Permanent Marker","Segoe Print","Bradley Hand",cursive;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
-main{max-width:760px;margin:0 auto;padding:64px max(20px,env(safe-area-inset-right,0px)) 56px max(20px,env(safe-area-inset-left,0px))}
-h1{font-family:var(--display);font-size:clamp(34px,6vw,52px);margin:0;letter-spacing:-0.02em}
-.lead{color:var(--dim);margin:10px 0 0;font-size:19px}
-ul{list-style:none;margin:40px 0 0;padding:0}
-li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;align-items:center;padding:22px 0;border-top:1px solid var(--line)}
-li:last-child{border-bottom:1px solid var(--line)}
-li img{width:64px;height:64px;border-radius:14px}
-h2{font-family:var(--display);font-size:22px;margin:0}
+main{max-width:1180px;margin:0 auto;padding-block:72px 48px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1{font-family:var(--display);font-size:clamp(44px,7vw,84px);line-height:1;margin:0;letter-spacing:-0.035em}
+.lead{color:var(--dim);margin:14px 0 0;font-size:clamp(18px,2vw,21px);max-width:32em}
+.stripe{display:flex;gap:6px;margin-top:22px}
+.stripe i{height:5px;width:44px;border-radius:3px}
+.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:48px}
+@media (max-width:900px){.apps{grid-template-columns:1fr;max-width:560px}}
+
+.app{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.app:hover,.app:focus-within{transform:translateY(-4px);border-color:color-mix(in srgb,var(--acc) 45%,var(--line));box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.visual{aspect-ratio:4/3;max-width:100%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.meta{display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;padding:18px 20px 20px;align-items:start}
+.meta img{width:48px;height:48px;border-radius:11px}
+h2{font-family:var(--display);font-size:21px;margin:0;line-height:1.2}
 h2 a{color:var(--text);text-decoration:none}
-h2 a:hover{color:var(--acc)}
-li p{margin:2px 0 6px;color:var(--dim)}
-.links{font-size:15px}
+h2 a::after{content:"";position:absolute;inset:0;z-index:1}
+.app p{margin:4px 0 8px;color:var(--dim);font-size:15.5px}
+.links{position:relative;z-index:2;font-size:14.5px;color:var(--dim)}
 .links a{color:var(--text);text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:2px;text-underline-offset:3px}
 .links a:hover{color:var(--acc)}
 a:focus-visible{outline:2px solid var(--acc,#fff);outline-offset:3px;border-radius:4px}
-footer{margin-top:28px;color:var(--dim);font-size:14.5px}
+h2 a:focus-visible{outline:0}
+.app:has(h2 a:focus-visible){outline:2px solid var(--acc);outline-offset:3px}
+
+/* OrbitOverlay: the watch hovering over a grid floor */
+.v-orbit{background:radial-gradient(70% 60% at 50% 35%,#262d45,#14151c 75%)}
+.v-orbit::before{content:"";position:absolute;left:10%;width:80%;top:70%;height:110px;
+  background-image:linear-gradient(rgba(160,180,240,.7) 1.5px,transparent 1.5px),linear-gradient(90deg,rgba(160,180,240,.7) 1.5px,transparent 1.5px);
+  background-size:34px 34px;background-position:center 0;transform:perspective(500px) rotateX(62deg);transform-origin:50% 0;
+  -webkit-mask-image:radial-gradient(ellipse 50% 95% at 50% 0,#000 35%,transparent 100%);mask-image:radial-gradient(ellipse 50% 95% at 50% 0,#000 35%,transparent 100%)}
+.v-orbit img{position:relative;width:74%;height:auto;filter:drop-shadow(0 22px 26px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1);margin-top:-14%}
+.app:hover .v-orbit img{transform:translateY(-6px)}
+
+/* VR Gallery: a tilted wall of its demo photos */
+.v-gallery{background:#0d0f15}
+.v-gallery .wall{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:130%;transform:rotate(-8deg);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.v-gallery .wall img{width:100%;height:auto;border-radius:7px;display:block;filter:saturate(1.2)}
+.app:hover .v-gallery .wall{transform:rotate(-8deg) translateX(-6%)}
+
+/* Mixtape: the tape, reels turning on hover */
+.v-mixtape{background:linear-gradient(140deg,#17d3b2,#0aa596 46%,#0b6c84)}
+.v-mixtape .cassette{width:78%;height:auto;transform:rotate(-5deg);filter:drop-shadow(0 18px 26px rgba(5,40,45,.45))}
+.v-mixtape .hand{font-family:var(--hand)}
+.reel{transform-box:fill-box;transform-origin:center}
+.app:hover .reel,.app:focus-within .reel{animation:reel 1.4s linear infinite}
+@keyframes reel{to{transform:rotate(360deg)}}
+
+footer{margin-top:44px;color:var(--dim);font-size:14.5px}
 footer a{color:var(--dim)}
+@media (prefers-reduced-motion:reduce){.app,.v-orbit img,.v-gallery .wall{transition:none}.app:hover .reel,.app:focus-within .reel{animation:none}}
 </style>
 </head>
 <body>
 <main>
 <h1>Erik1028</h1>
 <p class="lead">Free, open-source apps for Windows. Mostly for VR and VRChat.</p>
-<ul>
-<li style="--acc:#ff5d93"><img src="https://erik1028.github.io/OrbitOverlay/favicon.svg" width="64" height="64" alt=""><div><h2><a href="https://erik1028.github.io/OrbitOverlay/">OrbitOverlay</a></h2><p>A SteamVR overlay: a watch on your wrist, your PC screens around you, and a VR keyboard.</p><span class="links"><a href="https://erik1028.github.io/OrbitOverlay/">Website</a> · <a href="https://github.com/Erik1028/OrbitOverlay">GitHub</a></span></div></li>
-<li style="--acc:#3d8bfd"><img src="https://erik1028.github.io/VRGallery/icon.png" width="64" height="64" alt=""><div><h2><a href="https://erik1028.github.io/VRGallery/">VR Gallery</a></h2><p>A VRChat photo album that knows which world each photo was taken in and who was there.</p><span class="links"><a href="https://erik1028.github.io/VRGallery/">Website</a> · <a href="https://github.com/Erik1028/VRGallery">GitHub</a></span></div></li>
-<li style="--acc:#00c8aa"><img src="https://erik1028.github.io/Mixtape/icon.png" width="64" height="64" alt=""><div><h2><a href="https://erik1028.github.io/Mixtape/">Mixtape</a></h2><p>Your click-wheel iPod on Windows, without iTunes.</p><span class="links"><a href="https://erik1028.github.io/Mixtape/">Website</a> · <a href="https://github.com/Erik1028/Mixtape">GitHub</a></span></div></li>
-</ul>
+<div class="stripe" aria-hidden="true"><i style="background:#ff5d93"></i><i style="background:#3d8bfd"></i><i style="background:#00c8aa"></i></div>
+
+<div class="apps">
+
+<article class="app" style="--acc:#ff5d93">
+<div class="visual v-orbit" aria-hidden="true"><img src="img/watch.png" width="639" height="439" alt=""></div>
+<div class="meta"><img src="img/orbitoverlay.svg" width="48" height="48" alt=""><div>
+<h2><a href="https://erik1028.github.io/OrbitOverlay/">OrbitOverlay</a></h2>
+<p>A SteamVR overlay: a watch on your wrist, your PC screens around you, and a VR keyboard.</p>
+<span class="links"><a href="https://erik1028.github.io/OrbitOverlay/">Website</a> · <a href="https://github.com/Erik1028/OrbitOverlay">GitHub</a></span>
+</div></div>
+</article>
+
+<article class="app" style="--acc:#3d8bfd">
+<div class="visual v-gallery" aria-hidden="true"><div class="wall"><img src="img/w03.jpg" width="166" height="88" alt=""><img src="img/w05.jpg" width="166" height="88" alt=""><img src="img/w08.jpg" width="166" height="88" alt=""><img src="img/w10.jpg" width="166" height="88" alt=""><img src="img/w12.jpg" width="166" height="88" alt=""><img src="img/w14.jpg" width="166" height="88" alt=""><img src="img/w16.jpg" width="166" height="88" alt=""><img src="img/w01.jpg" width="166" height="88" alt=""><img src="img/w07.jpg" width="166" height="88" alt=""></div></div>
+<div class="meta"><img src="img/vrgallery.png" width="48" height="48" alt=""><div>
+<h2><a href="https://erik1028.github.io/VRGallery/">VR Gallery</a></h2>
+<p>A VRChat photo album that knows which world each photo was taken in and who was there.</p>
+<span class="links"><a href="https://erik1028.github.io/VRGallery/">Website</a> · <a href="https://github.com/Erik1028/VRGallery">GitHub</a></span>
+</div></div>
+</article>
+
+<article class="app" style="--acc:#00c8aa">
+<div class="visual v-mixtape" aria-hidden="true"><svg class="cassette" viewBox="0 0 360 232" aria-hidden="true">
+<rect x="8" y="8" width="344" height="216" rx="28" fill="#1c2125" stroke="#0a0f12" stroke-width="3"/>
+<rect x="14" y="14" width="332" height="20" rx="10" fill="#ffffff" opacity=".05"/>
+<g fill="#39414a"><circle cx="30" cy="30" r="5"/><circle cx="330" cy="30" r="5"/><circle cx="30" cy="202" r="5"/><circle cx="330" cy="202" r="5"/></g>
+<rect x="40" y="32" width="280" height="54" rx="12" fill="#eef3f4"/>
+<text x="58" y="69" class="hand" font-size="25" fill="#1c2125">Mixtape · Side A</text>
+<rect x="282" y="49" width="24" height="18" rx="5" fill="#00c8aa"/>
+<rect x="66" y="102" width="228" height="86" rx="43" fill="#0d1114"/>
+<path d="M122 176 Q180 186 238 176" fill="none" stroke="#3a2c25" stroke-width="3"/>
+<g transform="translate(122 145)"><g class="reel"><circle r="31" fill="#00c8aa"/><g stroke="#0d1114" stroke-width="5" stroke-linecap="round"><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(0)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(60)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(120)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(180)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(240)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(300)"/></g><circle r="9" fill="#0d1114"/></g></g><g transform="translate(238 145)"><g class="reel"><circle r="31" fill="#00c8aa"/><g stroke="#0d1114" stroke-width="5" stroke-linecap="round"><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(0)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(60)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(120)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(180)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(240)"/><line x1="0" y1="0" x2="0" y2="-23" transform="rotate(300)"/></g><circle r="9" fill="#0d1114"/></g></g>
+<path d="M92 224 L110 198 H250 L268 224 Z" fill="#2a3036"/>
+<g fill="#0d1114"><circle cx="140" cy="212" r="4"/><circle cx="220" cy="212" r="4"/></g>
+</svg></div>
+<div class="meta"><img src="img/mixtape.png" width="48" height="48" alt=""><div>
+<h2><a href="https://erik1028.github.io/Mixtape/">Mixtape</a></h2>
+<p>Your click-wheel iPod on Windows, without iTunes.</p>
+<span class="links"><a href="https://erik1028.github.io/Mixtape/">Website</a> · <a href="https://github.com/Erik1028/Mixtape">GitHub</a></span>
+</div></div>
+</article>
+
+</div>
+
 <footer>Made with an AI assistant and a lot of hands-on testing. <a href="https://github.com/Erik1028">github.com/Erik1028</a></footer>
 </main>
 </body>
