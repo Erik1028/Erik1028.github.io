@@ -21,7 +21,7 @@
 <link rel="preload" href="fonts/permanent-marker.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* An index of the apps. Each card shows the thing itself (the watch over a VR floor, a wall of VRChat photos,
-   a hand-labelled tape, the stream dock's keys, RGB fans, Flux's own window, a phone filming) in its own
+   a hand-labelled tape, the stream dock with its own key pictures, Prisma's and Flux's own windows, a phone filming) in its own
    app's accent; the page around them stays quiet. OrbitOverlay's card is twice as wide, so the seven fill
    two rows of four. */
 @font-face{font-family:"Permanent Marker";src:url(fonts/permanent-marker.woff2) format("woff2");font-display:swap}
@@ -76,10 +76,10 @@ h2 a:focus-visible{outline:0}
 .v-orbit img{position:relative;width:74%;height:auto;filter:drop-shadow(0 22px 26px rgba(0,0,0,.55));transition:transform .5s cubic-bezier(.2,.7,.2,1);margin-top:-14%}
 .app:hover .v-orbit img{transform:translateY(-6px)}
 
-/* VR Gallery: a tilted wall of its demo photos */
+/* VR Gallery: a tilted wall of real VRChat photos (the same approved ones as on its own page) */
 .v-gallery{background:#0d0f15}
 .v-gallery .wall{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:130%;transform:rotate(-8deg);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-.v-gallery .wall img{width:100%;height:auto;border-radius:7px;display:block;filter:saturate(1.2)}
+.v-gallery .wall img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:7px;display:block}
 .app:hover .v-gallery .wall{transform:rotate(-8deg) translateX(-6%)}
 
 /* Mixtape: the tape, reels turning on hover */
@@ -91,43 +91,39 @@ h2 a:focus-visible{outline:0}
 @keyframes reel{to{transform:rotate(360deg)}}
 .app.wide .v-orbit img{width:auto;height:84%;max-width:80%;margin-top:-5%}
 
-/* Hexpad: the stream dock, its keys rendered by Hexpad itself; on hover they fall asleep into an idle clock */
+/* Hexpad: the AKP03E as it is laid out (the same arrangement and proportions the configurator draws): six
+   separate screen keys 2x3, three round buttons under them, a big knob on the right and two small ones below it.
+   Each key shows its own tile of a picture Hexpad's renderer drew (176 px keys, 18 px apart); on hover they fall
+   asleep into the idle clock. */
 .v-hexpad{background:radial-gradient(80% 70% at 60% 30%,#3a1730,#141118 70%)}
-.v-hexpad .dock{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7% 7%;align-items:center;width:84%;padding:5.5% 6%;border-radius:16px;
-  background:linear-gradient(160deg,#202027,#0f0f13);border:1px solid #2d2d36;box-shadow:0 18px 36px rgba(0,0,0,.55);transform:rotate(-4deg)}
-.v-hexpad .keys{position:relative;border-radius:5px;overflow:hidden;background:#000;box-shadow:0 0 0 2px #050506}
-.v-hexpad .keys img{width:100%;height:auto;transition:opacity .5s ease}
-.v-hexpad .keys img + img{position:absolute;inset:0;opacity:0}
-.app:hover .v-hexpad .keys img + img,.app:focus-within .v-hexpad .keys img + img{opacity:1}
-.v-hexpad .knobs{display:flex;flex-direction:column;align-items:center;gap:10px}
-.v-hexpad .knobs i{display:block;width:30px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3d3d48,#16161b 65%);box-shadow:0 3px 8px rgba(0,0,0,.6),0 0 0 1.5px #0a0a0c;position:relative;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-.v-hexpad .knobs i:first-child{width:44px}
-.v-hexpad .knobs i::after{content:"";position:absolute;left:50%;top:10%;width:2px;height:24%;margin-left:-1px;border-radius:1px;background:#d0d0d8}
-.app:hover .v-hexpad .knobs i{transform:rotate(70deg)}
+.v-hexpad .dock{position:relative;width:86%;aspect-ratio:1260/797;border-radius:4%/6.3%;
+  background:linear-gradient(160deg,#202027,#0f0f13);border:1px solid #2d2d36;box-shadow:0 18px 36px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);transform:rotate(-4deg)}
+.v-hexpad .dock>*{position:absolute;display:block;aspect-ratio:1}
+.v-hexpad .key{width:19%;border-radius:12%;overflow:hidden;background:#000 url(img/hexpad-keys.webp) no-repeat;
+  background-size:320.45% 210.23%;box-shadow:0 0 0 1.5px #050506,0 0 0 2.5px #2c2c35}
+.v-hexpad .key::after{content:"";position:absolute;inset:0;background:url(img/hexpad-idle.webp) no-repeat;background-size:inherit;background-position:inherit;opacity:0;transition:opacity .5s ease}
+.app:hover .v-hexpad .key::after,.app:focus-within .v-hexpad .key::after{opacity:1}
+.v-hexpad .k1,.v-hexpad .k4{left:3.4%}.v-hexpad .k2,.v-hexpad .k5{left:24.7%}.v-hexpad .k3,.v-hexpad .k6{left:46%}
+.v-hexpad .k1,.v-hexpad .k2,.v-hexpad .k3{top:9.8%}.v-hexpad .k4,.v-hexpad .k5,.v-hexpad .k6{top:43.4%}
+.v-hexpad .k1,.v-hexpad .k4{background-position-x:0}.v-hexpad .k2,.v-hexpad .k5{background-position-x:50%}.v-hexpad .k3,.v-hexpad .k6{background-position-x:100%}
+.v-hexpad .k1,.v-hexpad .k2,.v-hexpad .k3{background-position-y:0}.v-hexpad .k4,.v-hexpad .k5,.v-hexpad .k6{background-position-y:100%}
+.v-hexpad .btn{width:8.1%;top:77.7%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#26262d,#111115);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #08080a}
+.v-hexpad .b1{left:8.85%}.v-hexpad .b2{left:30.15%}.v-hexpad .b3{left:51.45%}
+.v-hexpad .knob{border-radius:50%;background:radial-gradient(circle at 35% 30%,#3d3d48,#16161b 65%);box-shadow:0 3px 8px rgba(0,0,0,.6),0 0 0 1.5px #0a0a0c;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.v-hexpad .knob::after{content:"";position:absolute;left:50%;top:9%;width:2px;height:22%;margin-left:-1px;border-radius:1px;background:#d0d0d8}
+.v-hexpad .big{width:21.3%;left:72.35%;top:25.6%}
+.v-hexpad .small{width:10.8%;top:74.6%}.v-hexpad .s1{left:69.8%}.v-hexpad .s2{left:85.4%}
+.app:hover .v-hexpad .knob,.app:focus-within .v-hexpad .knob{transform:rotate(70deg)}
 
-/* Prisma: a case window of RGB fans and a light strip; on hover the colours run */
-.v-prisma{background:radial-gradient(70% 60% at 50% 40%,#1e1838,#0f0f17 75%)}
-.v-prisma .rig{width:82%;display:flex;flex-direction:column;gap:12%;align-items:center}
-.v-prisma .fans{display:flex;gap:6%;width:100%;justify-content:center}
-.v-prisma .fan{position:relative;width:29%;aspect-ratio:1;border-radius:50%;background:#0b0b10;box-shadow:0 10px 24px rgba(0,0,0,.5)}
-.v-prisma .fan::before{content:"";position:absolute;inset:0;border-radius:50%;
-  background:conic-gradient(from var(--a,0deg),#ff4d6d,#ffb84d,#9dff6b,#4dfff0,#5a80ff,#b151ff,#ff4d6d);
-  -webkit-mask:radial-gradient(closest-side,transparent 72%,#000 74%,#000 96%,transparent 98%);mask:radial-gradient(closest-side,transparent 72%,#000 74%,#000 96%,transparent 98%);
-  filter:drop-shadow(0 0 6px rgba(177,81,255,.55))}
-.v-prisma .fan::after{content:"";position:absolute;inset:24%;border-radius:50%;
-  background:repeating-conic-gradient(from 10deg,#1b1b24 0 22deg,#101016 22deg 45deg);box-shadow:inset 0 0 0 4px #15151c}
-.v-prisma .fan:nth-child(2)::before{--a:120deg}.v-prisma .fan:nth-child(3)::before{--a:240deg}
-.v-prisma .strip{width:100%;height:12px;border-radius:6px;background:linear-gradient(90deg,#ff4d6d,#ffb84d,#9dff6b,#4dfff0,#5a80ff,#b151ff,#ff4d6d,#ffb84d,#9dff6b);background-size:200% 100%;
-  box-shadow:0 0 14px rgba(90,128,255,.55)}
-.app:hover .v-prisma .fan::before,.app:focus-within .v-prisma .fan::before{animation:spin 2.4s linear infinite}
-.app:hover .v-prisma .fan::after,.app:focus-within .v-prisma .fan::after{animation:spin 1.1s linear infinite}
-.app:hover .v-prisma .strip,.app:focus-within .v-prisma .strip{animation:flow 2.4s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes flow{to{background-position:-100% 0}}
+/* Prisma: its own main window (v2.0.0, captured from the running app, the same picture as on its page) */
+.v-prisma{background:radial-gradient(70% 60% at 50% 40%,#1e1838,#0f0f17 75%);align-items:flex-start;justify-content:flex-start}
+.v-prisma img{width:150%;height:auto;max-width:none;margin:9% 0 0 7%;border-radius:10px;border:1px solid #2c2a3a;box-shadow:0 18px 40px rgba(0,0,0,.6);
+  transform:rotate(-3deg);transform-origin:0 0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.app:hover .v-prisma img{transform:rotate(-3deg) translate(-4%,-3%)}
 
-/* Flux: its own window, with made-up numbers */
+/* Flux: its own window, with made-up numbers (height:auto keeps its shape: the width alone sets the size) */
 .v-flux{background:linear-gradient(160deg,#10231b,#0a0e0c 70%);align-items:flex-start}
-.v-flux img{width:104%;max-width:none;margin:10% 0 0 9%;border-radius:10px;border:1px solid #24312c;box-shadow:0 18px 40px rgba(0,0,0,.6);
+.v-flux img{width:104%;height:auto;max-width:none;margin:10% 0 0 9%;border-radius:10px;border:1px solid #24312c;box-shadow:0 18px 40px rgba(0,0,0,.6);
   transform:rotate(-3deg);transform-origin:0 0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .app:hover .v-flux img{transform:rotate(-3deg) translate(-4%,-3%)}
 
@@ -157,8 +153,8 @@ h2 a:focus-visible{outline:0}
 .motion .app.done{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
 footer{margin-top:44px;color:var(--dim);font-size:14.5px}
 footer a{color:var(--dim)}
-@media (prefers-reduced-motion:reduce){h1,.by,.app{animation:none!important}.app,.v-orbit img,.v-gallery .wall,.v-flux img,.v-hexpad .keys img,.v-hexpad .knobs i{transition:none}
-  .app:hover .reel,.app:focus-within .reel,.v-prisma .fan::before,.v-prisma .fan::after,.v-prisma .strip,.v-focal .wave{animation:none!important}}
+@media (prefers-reduced-motion:reduce){h1,.by,.app{animation:none!important}.app,.v-orbit img,.v-gallery .wall,.v-flux img,.v-prisma img,.v-hexpad .key::after,.v-hexpad .knob{transition:none}
+  .app:hover .reel,.app:focus-within .reel,.v-focal .wave{animation:none!important}}
 </style>
 </head>
 <body>
@@ -179,7 +175,7 @@ footer a{color:var(--dim)}
 </article>
 
 <article class="app" style="--acc:#3d8bfd">
-<div class="visual v-gallery" aria-hidden="true"><div class="wall"><img src="img/w03.jpg" width="166" height="88" alt=""><img src="img/w05.jpg" width="166" height="88" alt=""><img src="img/w08.jpg" width="166" height="88" alt=""><img src="img/w10.jpg" width="166" height="88" alt=""><img src="img/w12.jpg" width="166" height="88" alt=""><img src="img/w14.jpg" width="166" height="88" alt=""><img src="img/w16.jpg" width="166" height="88" alt=""><img src="img/w01.jpg" width="166" height="88" alt=""><img src="img/w07.jpg" width="166" height="88" alt=""></div></div>
+<div class="visual v-gallery" aria-hidden="true"><div class="wall"><img src="img/wall/10.webp" width="448" height="252" alt=""><img src="img/wall/02.webp" width="448" height="252" alt=""><img src="img/wall/11.webp" width="448" height="252" alt=""><img src="img/wall/07.webp" width="448" height="252" alt=""><img src="img/wall/13.webp" width="448" height="252" alt=""><img src="img/wall/08.webp" width="448" height="252" alt=""><img src="img/wall/14.webp" width="448" height="252" alt=""><img src="img/wall/05.webp" width="448" height="252" alt=""><img src="img/wall/15.webp" width="448" height="252" alt=""></div></div>
 <div class="meta"><img src="img/vrgallery.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/VRGallery/">VR Gallery</a></h2>
 <span class="rel" data-repo="Erik1028/VRGallery" title="Latest release"><i></i>v2.16.1 · 16 Oct 2026</span>
@@ -218,7 +214,7 @@ footer a{color:var(--dim)}
 </article>
 
 <article class="app" style="--acc:#f8764f">
-<div class="visual v-hexpad" aria-hidden="true"><div class="dock"><div class="keys"><img src="img/hexpad-keys.webp" width="564" height="370" alt=""><img src="img/hexpad-idle.webp" width="564" height="370" alt="" loading="lazy"></div><div class="knobs"><i></i><i></i><i></i></div></div></div>
+<div class="visual v-hexpad" aria-hidden="true"><div class="dock"><i class="key k1"></i><i class="key k2"></i><i class="key k3"></i><i class="key k4"></i><i class="key k5"></i><i class="key k6"></i><i class="btn b1"></i><i class="btn b2"></i><i class="btn b3"></i><i class="knob big"></i><i class="knob small s1"></i><i class="knob small s2"></i></div></div>
 <div class="meta"><img src="img/hexpad.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/ajazz-dock/">Hexpad</a></h2>
 <span class="rel" data-repo="Erik1028/ajazz-dock" title="Latest release"><i></i>v2.0.0 · 16 Oct 2026</span>
@@ -228,7 +224,7 @@ footer a{color:var(--dim)}
 </article>
 
 <article class="app" style="--acc:#00c8aa">
-<div class="visual v-prisma" aria-hidden="true"><div class="rig"><div class="fans"><span class="fan"></span><span class="fan"></span><span class="fan"></span></div><div class="strip"></div></div></div>
+<div class="visual v-prisma" aria-hidden="true"><img src="img/prisma-window.webp" width="914" height="801" alt="" loading="lazy"></div>
 <div class="meta"><img src="img/prisma.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/Prisma/">Prisma</a></h2>
 <span class="rel" data-repo="Erik1028/Prisma" title="Latest release"><i></i>v2.0.0 · 21 Sept 2026</span>
