@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://erik1028.github.io/sitemap.xml

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Every page on erik1028.github.io: this index and the app sites (one host, so one sitemap covers them all). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://erik1028.github.io/</loc><lastmod>2026-10-16</lastmod></url>
+  <url>
+    <loc>https://erik1028.github.io/OrbitOverlay/</loc><lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://erik1028.github.io/OrbitOverlay/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://erik1028.github.io/OrbitOverlay/hu/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://erik1028.github.io/OrbitOverlay/"/>
+  </url>
+  <url>
+    <loc>https://erik1028.github.io/OrbitOverlay/hu/</loc><lastmod>2026-10-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://erik1028.github.io/OrbitOverlay/"/>
+    <xhtml:link rel="alternate" hreflang="hu" href="https://erik1028.github.io/OrbitOverlay/hu/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://erik1028.github.io/OrbitOverlay/"/>
+  </url>
+  <url><loc>https://erik1028.github.io/OrbitOverlay/guide.html</loc><lastmod>2026-10-16</lastmod></url>
+  <url><loc>https://erik1028.github.io/VRGallery/</loc><lastmod>2026-10-16</lastmod></url>
+  <url><loc>https://erik1028.github.io/Mixtape/</loc><lastmod>2026-10-16</lastmod></url>
+</urlset>

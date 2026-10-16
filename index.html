@@ -3,14 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Erik1028 apps</title>
+<title>Erik1028 · apps for VR, VRChat and click-wheel iPods</title>
 <meta name="description" content="Apps for VR, VRChat and click-wheel iPods by Erik1028: OrbitOverlay, VR Gallery and Mixtape. Free and open source, for Windows.">
-<meta property="og:title" content="Erik1028's apps">
+<link rel="canonical" href="https://erik1028.github.io/">
+<meta name="author" content="Erik1028">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Erik1028">
+<meta property="og:title" content="Apps for VR, VRChat and click-wheel iPods">
 <meta property="og:description" content="Apps for VR, VRChat and click-wheel iPods: OrbitOverlay, VR Gallery and Mixtape. Free and open source, for Windows.">
 <meta property="og:image" content="https://erik1028.github.io/og.png">
 <meta property="og:url" content="https://erik1028.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#101116">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://erik1028.github.io/#site", "name": "Erik1028", "url": "https://erik1028.github.io/", "inLanguage": "en", "author": {"@id": "https://erik1028.github.io/#erik"}}, {"@type": "Person", "@id": "https://erik1028.github.io/#erik", "name": "Erik1028", "url": "https://github.com/Erik1028", "sameAs": ["https://github.com/Erik1028"]}, {"@type": "ItemList", "name": "Apps by Erik1028", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "OrbitOverlay", "url": "https://erik1028.github.io/OrbitOverlay/"}, {"@type": "ListItem", "position": 2, "name": "VR Gallery", "url": "https://erik1028.github.io/VRGallery/"}, {"@type": "ListItem", "position": 3, "name": "Mixtape", "url": "https://erik1028.github.io/Mixtape/"}]}]}</script>
 <link rel="icon" href="img/orbitoverlay.svg" type="image/svg+xml">
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion")}catch(e){}</script>
 <link rel="preload" href="fonts/permanent-marker.woff2" as="font" type="font/woff2" crossorigin>
@@ -45,6 +50,8 @@ h1 span{color:var(--acc)}
 h2{font-family:var(--display);font-size:21px;margin:0;line-height:1.2}
 h2 a{color:var(--text);text-decoration:none}
 h2 a::after{content:"";position:absolute;inset:0;z-index:1}
+.rel{display:block;min-height:1.5em;margin-top:3px;font-family:"Cascadia Mono",Consolas,ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--dim);font-variant-numeric:tabular-nums}
+.rel i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);margin-right:7px;vertical-align:1px}
 .app p{margin:4px 0 8px;color:var(--dim);font-size:15.5px}
 .links{position:relative;z-index:2;font-size:14.5px;color:var(--dim)}
 .links a{color:var(--text);text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:2px;text-underline-offset:3px}
@@ -87,6 +94,8 @@ h2 a:focus-visible{outline:0}
   .motion .app:nth-child(1){animation-delay:.22s}.motion .app:nth-child(2){animation-delay:.34s}.motion .app:nth-child(3){animation-delay:.46s}
 }
 @keyframes rise{from{opacity:0;transform:translateY(32px)}}
+/* once the entrance has played it is taken off, so a later resize or re-layout can never replay it */
+.settled h1,.settled .by,.settled .app{animation:none!important}
 .motion .app.done{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
 footer{margin-top:44px;color:var(--dim);font-size:14.5px}
 footer a{color:var(--dim)}
@@ -104,6 +113,7 @@ footer a{color:var(--dim)}
 <div class="visual v-orbit" aria-hidden="true"><img src="img/watch.png" width="639" height="439" alt=""></div>
 <div class="meta"><img src="img/orbitoverlay.svg" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/OrbitOverlay/">OrbitOverlay</a></h2>
+<span class="rel" data-repo="Erik1028/OrbitOverlay"></span>
 <p>A SteamVR overlay: a watch on your wrist, your PC screens around you, and a VR keyboard.</p>
 <span class="links"><a href="https://erik1028.github.io/OrbitOverlay/">Website</a> · <a href="https://github.com/Erik1028/OrbitOverlay">GitHub</a></span>
 </div></div>
@@ -113,6 +123,7 @@ footer a{color:var(--dim)}
 <div class="visual v-gallery" aria-hidden="true"><div class="wall"><img src="img/w03.jpg" width="166" height="88" alt=""><img src="img/w05.jpg" width="166" height="88" alt=""><img src="img/w08.jpg" width="166" height="88" alt=""><img src="img/w10.jpg" width="166" height="88" alt=""><img src="img/w12.jpg" width="166" height="88" alt=""><img src="img/w14.jpg" width="166" height="88" alt=""><img src="img/w16.jpg" width="166" height="88" alt=""><img src="img/w01.jpg" width="166" height="88" alt=""><img src="img/w07.jpg" width="166" height="88" alt=""></div></div>
 <div class="meta"><img src="img/vrgallery.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/VRGallery/">VR Gallery</a></h2>
+<span class="rel" data-repo="Erik1028/VRGallery"></span>
 <p>A VRChat photo album that knows which world each photo was taken in and who was there.</p>
 <span class="links"><a href="https://erik1028.github.io/VRGallery/">Website</a> · <a href="https://github.com/Erik1028/VRGallery">GitHub</a></span>
 </div></div>
@@ -141,6 +152,7 @@ footer a{color:var(--dim)}
 </svg></div>
 <div class="meta"><img src="img/mixtape.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/Mixtape/">Mixtape</a></h2>
+<span class="rel" data-repo="Erik1028/Mixtape"></span>
 <p>Your click-wheel iPod on Windows, without iTunes.</p>
 <span class="links"><a href="https://erik1028.github.io/Mixtape/">Website</a> · <a href="https://github.com/Erik1028/Mixtape">GitHub</a></span>
 </div></div>
@@ -150,6 +162,22 @@ footer a{color:var(--dim)}
 
 <footer>Made with an AI assistant and a lot of hands-on testing.</footer>
 </main>
+<script>
+// each card's latest release, straight from GitHub (the line stays empty if that fails)
+document.querySelectorAll('.rel[data-repo]').forEach(function (el) {
+  fetch('https://api.github.com/repos/' + el.getAttribute('data-repo') + '/releases/latest')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (rel) {
+      if (!rel || !rel.tag_name) return;
+      var d = rel.published_at ? new Date(rel.published_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+      el.innerHTML = '<i></i>';
+      el.appendChild(document.createTextNode(rel.tag_name + (d ? ' · ' + d : '')));
+      el.title = 'Latest release';
+    })
+    .catch(function () {});
+});
+</script>
 <script src="motion.js"></script>
+<script>setTimeout(function () { document.documentElement.classList.add("settled"); }, 1700);</script>
 </body>
 </html>
