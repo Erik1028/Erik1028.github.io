@@ -16,8 +16,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#101116">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://erik1028.github.io/#site", "name": "Erik1028", "url": "https://erik1028.github.io/", "inLanguage": "en", "author": {"@id": "https://erik1028.github.io/#erik"}}, {"@type": "Person", "@id": "https://erik1028.github.io/#erik", "name": "Erik1028", "url": "https://github.com/Erik1028", "sameAs": ["https://github.com/Erik1028"]}, {"@type": "ItemList", "name": "Apps by Erik1028", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "OrbitOverlay", "url": "https://erik1028.github.io/OrbitOverlay/"}, {"@type": "ListItem", "position": 2, "name": "VR Gallery", "url": "https://erik1028.github.io/VRGallery/"}, {"@type": "ListItem", "position": 3, "name": "Mixtape", "url": "https://erik1028.github.io/Mixtape/"}, {"@type": "ListItem", "position": 4, "name": "Hexpad", "url": "https://erik1028.github.io/ajazz-dock/"}, {"@type": "ListItem", "position": 5, "name": "Prisma", "url": "https://erik1028.github.io/Prisma/"}, {"@type": "ListItem", "position": 6, "name": "Flux", "url": "https://erik1028.github.io/Flux/"}, {"@type": "ListItem", "position": 7, "name": "Focal", "url": "https://erik1028.github.io/focal/"}]}]}</script>
+<link rel="alternate" type="application/atom+xml" title="Erik1028's apps: new releases" href="feed.xml">
 <link rel="icon" href="img/orbitoverlay.svg" type="image/svg+xml">
-<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion")}catch(e){}</script>
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion")}catch(e){}
+try{var l=(location.hash.match(/^#look-(95|cyber|terminal)$/)||[])[1]||localStorage.getItem("hub-look");if(/^(95|cyber|terminal)$/.test(l))document.documentElement.setAttribute("data-look",l)}catch(e){}</script>
+<link rel="stylesheet" href="looks.css">
 <link rel="preload" href="fonts/permanent-marker.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* An index of the apps. Each card shows the thing itself (the watch over a VR floor, a wall of VRChat photos,
@@ -159,12 +162,17 @@ footer a{color:var(--dim)}
 </head>
 <body>
 <main>
+<header class="hero">
+<div class="tb" aria-hidden="true"><img src="img/orbitoverlay.svg" width="16" height="16" alt=""><b>Erik1028 — Apps</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <h1>Apps for <span style="--acc:#ff5d93">VR</span>, <span style="--acc:#3d8bfd">VRChat</span>, <span style="--acc:#7fb564">click&#8209;wheel iPods</span> and <span class="desk">the desk around them</span>.</h1>
-<p class="by">by <a href="https://github.com/Erik1028">Erik1028</a> · free Windows apps, source on GitHub</p>
+<p class="by">by <a href="https://github.com/Erik1028">Erik1028</a> · free Windows apps, source on GitHub · <a class="news" href="news.html">What's new</a></p>
+<div class="looks" role="group" aria-label="Page look"><span>Look</span><button type="button" data-look="modern" aria-pressed="true">Modern</button><button type="button" data-look="95" aria-pressed="false">Windows 95</button><button type="button" data-look="cyber" aria-pressed="false">Cyber</button><button type="button" data-look="terminal" aria-pressed="false">Terminal</button></div>
+</header>
 
 <div class="apps" data-stagger="90">
 
 <article class="app wide" style="--acc:#ff5d93">
+<div class="tb" aria-hidden="true"><img src="img/orbitoverlay.svg" width="16" height="16" alt=""><b>OrbitOverlay</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <div class="visual v-orbit" aria-hidden="true"><img src="img/watch-bento.webp" width="640" height="440" alt=""></div>
 <div class="meta"><img src="img/orbitoverlay.svg" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/OrbitOverlay/">OrbitOverlay</a></h2>
@@ -175,16 +183,18 @@ footer a{color:var(--dim)}
 </article>
 
 <article class="app" style="--acc:#3d8bfd">
+<div class="tb" aria-hidden="true"><img src="img/vrgallery.png" width="16" height="16" alt=""><b>VR Gallery</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <div class="visual v-gallery" aria-hidden="true"><div class="wall"><img src="img/wall/10.webp" width="448" height="252" alt=""><img src="img/wall/02.webp" width="448" height="252" alt=""><img src="img/wall/11.webp" width="448" height="252" alt=""><img src="img/wall/07.webp" width="448" height="252" alt=""><img src="img/wall/13.webp" width="448" height="252" alt=""><img src="img/wall/08.webp" width="448" height="252" alt=""><img src="img/wall/14.webp" width="448" height="252" alt=""><img src="img/wall/05.webp" width="448" height="252" alt=""><img src="img/wall/15.webp" width="448" height="252" alt=""></div></div>
 <div class="meta"><img src="img/vrgallery.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/VRGallery/">VR Gallery</a></h2>
-<span class="rel" data-repo="Erik1028/VRGallery" title="Latest release"><i></i>v2.16.1 · 16 Oct 2026</span>
+<span class="rel" data-repo="Erik1028/VRGallery" title="Latest release"><i></i>v2.16.2 · 16 Oct 2026</span>
 <p>A VRChat photo album that knows which world each photo was taken in and who was there.</p>
 <span class="links"><a href="https://erik1028.github.io/VRGallery/">Website</a> · <a href="https://github.com/Erik1028/VRGallery">GitHub</a></span>
 </div></div>
 </article>
 
 <article class="app" style="--acc:#7fb564">
+<div class="tb" aria-hidden="true"><img src="img/mixtape.png" width="16" height="16" alt=""><b>Mixtape</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <div class="visual v-mixtape" aria-hidden="true"><svg class="cassette" viewBox="0 0 360 232" aria-hidden="true">
 <defs>
 <linearGradient id="mxBlue" x1="0" x2="1"><stop offset="0" stop-color="#4e96c6"/><stop offset="1" stop-color="#6d8ad2"/></linearGradient>
@@ -214,6 +224,7 @@ footer a{color:var(--dim)}
 </article>
 
 <article class="app" style="--acc:#f8764f">
+<div class="tb" aria-hidden="true"><img src="img/hexpad.png" width="16" height="16" alt=""><b>Hexpad</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <div class="visual v-hexpad" aria-hidden="true"><div class="dock"><i class="key k1"></i><i class="key k2"></i><i class="key k3"></i><i class="key k4"></i><i class="key k5"></i><i class="key k6"></i><i class="btn b1"></i><i class="btn b2"></i><i class="btn b3"></i><i class="knob big"></i><i class="knob small s1"></i><i class="knob small s2"></i></div></div>
 <div class="meta"><img src="img/hexpad.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/ajazz-dock/">Hexpad</a></h2>
@@ -224,16 +235,18 @@ footer a{color:var(--dim)}
 </article>
 
 <article class="app" style="--acc:#00c8aa">
+<div class="tb" aria-hidden="true"><img src="img/prisma.png" width="16" height="16" alt=""><b>Prisma</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <div class="visual v-prisma" aria-hidden="true"><img src="img/prisma-window.webp" width="914" height="801" alt="" loading="lazy"></div>
 <div class="meta"><img src="img/prisma.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/Prisma/">Prisma</a></h2>
-<span class="rel" data-repo="Erik1028/Prisma" title="Latest release"><i></i>v2.0.0 · 21 Sept 2026</span>
+<span class="rel" data-repo="Erik1028/Prisma" title="Latest release"><i></i>v2.1.0 · 16 Oct 2026</span>
 <p>All the RGB lighting in your PC from one app: motherboard, RAM, GPU, fans, keyboard and mouse.</p>
 <span class="links"><a href="https://erik1028.github.io/Prisma/">Website</a> · <a href="https://github.com/Erik1028/Prisma">GitHub</a></span>
 </div></div>
 </article>
 
 <article class="app" style="--acc:#34d399">
+<div class="tb" aria-hidden="true"><img src="img/flux.png" width="16" height="16" alt=""><b>Flux</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <div class="visual v-flux" aria-hidden="true"><img src="img/flux-window.webp" width="720" height="470" alt="" loading="lazy"></div>
 <div class="meta"><img src="img/flux.png" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/Flux/">Flux</a></h2>
@@ -244,6 +257,7 @@ footer a{color:var(--dim)}
 </article>
 
 <article class="app" style="--acc:#4fd2f0">
+<div class="tb" aria-hidden="true"><img src="img/focal.png" width="16" height="16" alt=""><b>Focal</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <div class="visual v-focal" aria-hidden="true"><svg viewBox="0 0 360 240" aria-hidden="true">
 <defs>
 <linearGradient id="fcBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9edf0"/><stop offset="1" stop-color="#aab3bb"/></linearGradient>
@@ -309,6 +323,8 @@ document.querySelectorAll('.rel[data-repo]').forEach(function (el) {
     .catch(function () {});
 });
 </script>
+<div class="taskbar" aria-hidden="true"><span class="start"><img src="img/orbitoverlay.svg" width="16" height="16" alt="">Start</span><span class="task"><img src="img/orbitoverlay.svg" width="16" height="16" alt="">Erik1028 — Apps</span><span class="tray"><span class="clock"></span></span></div>
+<script src="looks.js"></script>
 <script src="motion.js"></script>
 <script>setTimeout(function () { document.documentElement.classList.add("settled"); }, 1700);</script>
 </body>
