@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Erik1028</title>
-<meta name="description" content="Free, open-source Windows apps by Erik1028: OrbitOverlay, VR Gallery and Mixtape.">
+<title>Erik1028 apps</title>
+<meta name="description" content="Apps for VR, VRChat and click-wheel iPods by Erik1028: OrbitOverlay, VR Gallery and Mixtape. Free and open source, for Windows.">
 <meta property="og:title" content="Erik1028's apps">
-<meta property="og:description" content="Free, open-source Windows apps: OrbitOverlay, VR Gallery and Mixtape.">
+<meta property="og:description" content="Apps for VR, VRChat and click-wheel iPods: OrbitOverlay, VR Gallery and Mixtape. Free and open source, for Windows.">
 <meta property="og:image" content="https://erik1028.github.io/og.png">
 <meta property="og:url" content="https://erik1028.github.io/">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,10 +27,11 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 main{max-width:1180px;margin:0 auto;padding-block:72px 48px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-h1{font-family:var(--display);font-size:clamp(44px,7vw,84px);line-height:1;margin:0;letter-spacing:-0.035em}
-.lead{color:var(--dim);margin:14px 0 0;font-size:clamp(18px,2vw,21px);max-width:32em}
-.stripe{display:flex;gap:6px;margin-top:22px}
-.stripe i{height:5px;width:44px;border-radius:3px}
+h1{font-family:var(--display);font-size:clamp(38px,6.2vw,76px);line-height:1.04;margin:0;letter-spacing:-0.03em;max-width:13em;text-wrap:balance}
+h1 span{color:var(--acc)}
+.by{color:var(--dim);margin:18px 0 0;font-size:17px}
+.by a{color:var(--text);text-decoration:none;font-weight:600}
+.by a:hover{text-decoration:underline}
 .apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:48px}
 @media (max-width:900px){.apps{grid-template-columns:1fr;max-width:560px}}
 
@@ -81,9 +82,8 @@ footer a{color:var(--dim)}
 </head>
 <body>
 <main>
-<h1>Erik1028</h1>
-<p class="lead">Free, open-source apps for Windows. Mostly for VR and VRChat.</p>
-<div class="stripe" aria-hidden="true"><i style="background:#ff5d93"></i><i style="background:#3d8bfd"></i><i style="background:#00c8aa"></i></div>
+<h1>Apps for <span style="--acc:#ff5d93">VR</span>, <span style="--acc:#3d8bfd">VRChat</span> and <span style="--acc:#00c8aa">click&#8209;wheel iPods</span>.</h1>
+<p class="by">by <a href="https://github.com/Erik1028">Erik1028</a> · free and open source, for Windows</p>
 
 <div class="apps">
 
@@ -128,7 +128,7 @@ footer a{color:var(--dim)}
 
 </div>
 
-<footer>Made with an AI assistant and a lot of hands-on testing. <a href="https://github.com/Erik1028">github.com/Erik1028</a></footer>
+<footer>Made with an AI assistant and a lot of hands-on testing.</footer>
 </main>
 </body>
 </html>
