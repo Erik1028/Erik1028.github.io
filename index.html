@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erik1028</title>
+<meta name="description" content="Free, open-source Windows apps by Erik1028: OrbitOverlay, VR Gallery and Mixtape.">
+<meta property="og:title" content="Erik1028's apps">
+<meta property="og:description" content="Free, open-source Windows apps: OrbitOverlay, VR Gallery and Mixtape.">
+<meta name="theme-color" content="#121318">
+<link rel="icon" href="https://erik1028.github.io/OrbitOverlay/favicon.svg" type="image/svg+xml">
+<style>
+/* A plain index of the apps: each row wears its own app's accent, so the page is the three of them side by side. */
+:root{
+  color-scheme:dark;
+  --bg:#121318; --line:#262832; --text:#eceef3; --dim:#9a9fae;
+  --sans:"Segoe UI Variable Text","Segoe UI Variable","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --display:"Segoe UI Variable Display","Segoe UI Variable","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+main{max-width:760px;margin:0 auto;padding:64px max(20px,env(safe-area-inset-right,0px)) 56px max(20px,env(safe-area-inset-left,0px))}
+h1{font-family:var(--display);font-size:clamp(34px,6vw,52px);margin:0;letter-spacing:-0.02em}
+.lead{color:var(--dim);margin:10px 0 0;font-size:19px}
+ul{list-style:none;margin:40px 0 0;padding:0}
+li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:18px;align-items:center;padding:22px 0;border-top:1px solid var(--line)}
+li:last-child{border-bottom:1px solid var(--line)}
+li img{width:64px;height:64px;border-radius:14px}
+h2{font-family:var(--display);font-size:22px;margin:0}
+h2 a{color:var(--text);text-decoration:none}
+h2 a:hover{color:var(--acc)}
+li p{margin:2px 0 6px;color:var(--dim)}
+.links{font-size:15px}
+.links a{color:var(--text);text-decoration:underline;text-decoration-color:var(--acc);text-decoration-thickness:2px;text-underline-offset:3px}
+.links a:hover{color:var(--acc)}
+a:focus-visible{outline:2px solid var(--acc,#fff);outline-offset:3px;border-radius:4px}
+footer{margin-top:28px;color:var(--dim);font-size:14.5px}
+footer a{color:var(--dim)}
+</style>
+</head>
+<body>
+<main>
+<h1>Erik1028</h1>
+<p class="lead">Free, open-source apps for Windows. Mostly for VR and VRChat.</p>
+<ul>
+<li style="--acc:#ff5d93"><img src="https://erik1028.github.io/OrbitOverlay/favicon.svg" width="64" height="64" alt=""><div><h2><a href="https://erik1028.github.io/OrbitOverlay/">OrbitOverlay</a></h2><p>A SteamVR overlay: a watch on your wrist, your PC screens around you, and a VR keyboard.</p><span class="links"><a href="https://erik1028.github.io/OrbitOverlay/">Website</a> · <a href="https://github.com/Erik1028/OrbitOverlay">GitHub</a></span></div></li>
+<li style="--acc:#3d8bfd"><img src="https://erik1028.github.io/VRGallery/icon.png" width="64" height="64" alt=""><div><h2><a href="https://erik1028.github.io/VRGallery/">VR Gallery</a></h2><p>A VRChat photo album that knows which world each photo was taken in and who was there.</p><span class="links"><a href="https://erik1028.github.io/VRGallery/">Website</a> · <a href="https://github.com/Erik1028/VRGallery">GitHub</a></span></div></li>
+<li style="--acc:#00c8aa"><img src="https://erik1028.github.io/Mixtape/icon.png" width="64" height="64" alt=""><div><h2><a href="https://erik1028.github.io/Mixtape/">Mixtape</a></h2><p>Your click-wheel iPod on Windows, without iTunes.</p><span class="links"><a href="https://erik1028.github.io/Mixtape/">Website</a> · <a href="https://github.com/Erik1028/Mixtape">GitHub</a></span></div></li>
+</ul>
+<footer>Made with an AI assistant and a lot of hands-on testing. <a href="https://github.com/Erik1028">github.com/Erik1028</a></footer>
+</main>
+</body>
+</html>
