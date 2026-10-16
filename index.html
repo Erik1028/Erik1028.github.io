@@ -3,25 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Erik1028 · apps for VR, VRChat and click-wheel iPods</title>
-<meta name="description" content="Apps for VR, VRChat and click-wheel iPods by Erik1028: OrbitOverlay, VR Gallery and Mixtape. Free and open source, for Windows.">
+<title>Erik1028 · apps for VR, VRChat, iPods and the desk around them</title>
+<meta name="description" content="Free Windows apps by Erik1028: OrbitOverlay (SteamVR overlay), VR Gallery (VRChat photo album), Mixtape (click-wheel iPods), Hexpad (Ajazz stream dock), Prisma (RGB lighting), Flux (GPU memory monitor) and Focal (iPhone as a webcam).">
 <link rel="canonical" href="https://erik1028.github.io/">
 <meta name="author" content="Erik1028">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Erik1028">
-<meta property="og:title" content="Apps for VR, VRChat and click-wheel iPods">
-<meta property="og:description" content="Apps for VR, VRChat and click-wheel iPods: OrbitOverlay, VR Gallery and Mixtape. Free and open source, for Windows.">
+<meta property="og:title" content="Apps for VR, VRChat, iPods and the desk around them">
+<meta property="og:description" content="OrbitOverlay, VR Gallery, Mixtape, Hexpad, Prisma, Flux and Focal: free Windows apps by Erik1028.">
 <meta property="og:image" content="https://erik1028.github.io/og.png">
 <meta property="og:url" content="https://erik1028.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#101116">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://erik1028.github.io/#site", "name": "Erik1028", "url": "https://erik1028.github.io/", "inLanguage": "en", "author": {"@id": "https://erik1028.github.io/#erik"}}, {"@type": "Person", "@id": "https://erik1028.github.io/#erik", "name": "Erik1028", "url": "https://github.com/Erik1028", "sameAs": ["https://github.com/Erik1028"]}, {"@type": "ItemList", "name": "Apps by Erik1028", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "OrbitOverlay", "url": "https://erik1028.github.io/OrbitOverlay/"}, {"@type": "ListItem", "position": 2, "name": "VR Gallery", "url": "https://erik1028.github.io/VRGallery/"}, {"@type": "ListItem", "position": 3, "name": "Mixtape", "url": "https://erik1028.github.io/Mixtape/"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://erik1028.github.io/#site", "name": "Erik1028", "url": "https://erik1028.github.io/", "inLanguage": "en", "author": {"@id": "https://erik1028.github.io/#erik"}}, {"@type": "Person", "@id": "https://erik1028.github.io/#erik", "name": "Erik1028", "url": "https://github.com/Erik1028", "sameAs": ["https://github.com/Erik1028"]}, {"@type": "ItemList", "name": "Apps by Erik1028", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "OrbitOverlay", "url": "https://erik1028.github.io/OrbitOverlay/"}, {"@type": "ListItem", "position": 2, "name": "VR Gallery", "url": "https://erik1028.github.io/VRGallery/"}, {"@type": "ListItem", "position": 3, "name": "Mixtape", "url": "https://erik1028.github.io/Mixtape/"}, {"@type": "ListItem", "position": 4, "name": "Hexpad", "url": "https://erik1028.github.io/ajazz-dock/"}, {"@type": "ListItem", "position": 5, "name": "Prisma", "url": "https://erik1028.github.io/Prisma/"}, {"@type": "ListItem", "position": 6, "name": "Flux", "url": "https://erik1028.github.io/Flux/"}, {"@type": "ListItem", "position": 7, "name": "Focal", "url": "https://erik1028.github.io/focal/"}]}]}</script>
 <link rel="icon" href="img/orbitoverlay.svg" type="image/svg+xml">
 <script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion")}catch(e){}</script>
 <link rel="preload" href="fonts/permanent-marker.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* An index of three apps. Each card shows the thing itself (the watch over a VR floor, a wall of VRChat photos,
-   a hand-labelled tape) in its own app's accent; the page around them stays quiet. */
+/* An index of the apps. Each card shows the thing itself (the watch over a VR floor, a wall of VRChat photos,
+   a hand-labelled tape, the stream dock's keys, RGB fans, Flux's own window, a phone filming) in its own
+   app's accent; the page around them stays quiet. OrbitOverlay's card is twice as wide, so the seven fill
+   two rows of four. */
 @font-face{font-family:"Permanent Marker";src:url(fonts/permanent-marker.woff2) format("woff2");font-display:swap}
 :root{
   color-scheme:dark;
@@ -33,13 +35,18 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 main{max-width:1180px;margin:0 auto;padding-block:72px 48px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
-h1{font-family:var(--display);font-size:clamp(38px,6.2vw,76px);line-height:1.04;margin:0;letter-spacing:-0.03em;max-width:13em;text-wrap:balance}
+h1{font-family:var(--display);font-size:clamp(36px,5.4vw,66px);line-height:1.05;margin:0;letter-spacing:-0.03em;max-width:17em;text-wrap:balance}
 h1 span{color:var(--acc)}
+h1 .desk{background:linear-gradient(90deg,#f8764f,#b151ff 40%,#34d399 75%,#4cc3d9);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .by{color:var(--dim);margin:18px 0 0;font-size:17px}
 .by a{color:var(--text);text-decoration:none;font-weight:600}
 .by a:hover{text-decoration:underline}
-.apps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:48px}
-@media (max-width:900px){.apps{grid-template-columns:1fr;max-width:560px}}
+.apps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;margin-top:48px}
+.app.wide{grid-column:span 2}
+.app.wide .visual{aspect-ratio:auto;flex:1;min-height:200px}
+@media (min-width:1101px){.app:not(.wide) .meta{grid-template-columns:40px minmax(0,1fr);gap:12px;padding:16px 16px 18px}.app:not(.wide) .meta img{width:40px;height:40px;border-radius:9px}}
+@media (max-width:1100px){.apps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.apps{grid-template-columns:1fr;max-width:560px}.app.wide{grid-column:auto}.app.wide .visual{aspect-ratio:4/3;flex:none;min-height:0}}
 
 .app{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;
   transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
@@ -82,6 +89,56 @@ h2 a:focus-visible{outline:0}
 .reel{transform-box:fill-box;transform-origin:center}
 .app:hover .reel,.app:focus-within .reel{animation:reel 1.4s linear infinite}
 @keyframes reel{to{transform:rotate(360deg)}}
+.app.wide .v-orbit img{width:auto;height:84%;max-width:80%;margin-top:-5%}
+
+/* Hexpad: the stream dock, its keys rendered by Hexpad itself; on hover they fall asleep into an idle clock */
+.v-hexpad{background:radial-gradient(80% 70% at 60% 30%,#3a1730,#141118 70%)}
+.v-hexpad .dock{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7% 7%;align-items:center;width:84%;padding:5.5% 6%;border-radius:16px;
+  background:linear-gradient(160deg,#202027,#0f0f13);border:1px solid #2d2d36;box-shadow:0 18px 36px rgba(0,0,0,.55);transform:rotate(-4deg)}
+.v-hexpad .keys{position:relative;border-radius:5px;overflow:hidden;background:#000;box-shadow:0 0 0 2px #050506}
+.v-hexpad .keys img{width:100%;height:auto;transition:opacity .5s ease}
+.v-hexpad .keys img + img{position:absolute;inset:0;opacity:0}
+.app:hover .v-hexpad .keys img + img,.app:focus-within .v-hexpad .keys img + img{opacity:1}
+.v-hexpad .knobs{display:flex;flex-direction:column;align-items:center;gap:10px}
+.v-hexpad .knobs i{display:block;width:30px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3d3d48,#16161b 65%);box-shadow:0 3px 8px rgba(0,0,0,.6),0 0 0 1.5px #0a0a0c;position:relative;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.v-hexpad .knobs i:first-child{width:44px}
+.v-hexpad .knobs i::after{content:"";position:absolute;left:50%;top:10%;width:2px;height:24%;margin-left:-1px;border-radius:1px;background:#d0d0d8}
+.app:hover .v-hexpad .knobs i{transform:rotate(70deg)}
+
+/* Prisma: a case window of RGB fans and a light strip; on hover the colours run */
+.v-prisma{background:radial-gradient(70% 60% at 50% 40%,#1e1838,#0f0f17 75%)}
+.v-prisma .rig{width:82%;display:flex;flex-direction:column;gap:12%;align-items:center}
+.v-prisma .fans{display:flex;gap:6%;width:100%;justify-content:center}
+.v-prisma .fan{position:relative;width:29%;aspect-ratio:1;border-radius:50%;background:#0b0b10;box-shadow:0 10px 24px rgba(0,0,0,.5)}
+.v-prisma .fan::before{content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from var(--a,0deg),#ff4d6d,#ffb84d,#9dff6b,#4dfff0,#5a80ff,#b151ff,#ff4d6d);
+  -webkit-mask:radial-gradient(closest-side,transparent 72%,#000 74%,#000 96%,transparent 98%);mask:radial-gradient(closest-side,transparent 72%,#000 74%,#000 96%,transparent 98%);
+  filter:drop-shadow(0 0 6px rgba(177,81,255,.55))}
+.v-prisma .fan::after{content:"";position:absolute;inset:24%;border-radius:50%;
+  background:repeating-conic-gradient(from 10deg,#1b1b24 0 22deg,#101016 22deg 45deg);box-shadow:inset 0 0 0 4px #15151c}
+.v-prisma .fan:nth-child(2)::before{--a:120deg}.v-prisma .fan:nth-child(3)::before{--a:240deg}
+.v-prisma .strip{width:100%;height:12px;border-radius:6px;background:linear-gradient(90deg,#ff4d6d,#ffb84d,#9dff6b,#4dfff0,#5a80ff,#b151ff,#ff4d6d,#ffb84d,#9dff6b);background-size:200% 100%;
+  box-shadow:0 0 14px rgba(90,128,255,.55)}
+.app:hover .v-prisma .fan::before,.app:focus-within .v-prisma .fan::before{animation:spin 2.4s linear infinite}
+.app:hover .v-prisma .fan::after,.app:focus-within .v-prisma .fan::after{animation:spin 1.1s linear infinite}
+.app:hover .v-prisma .strip,.app:focus-within .v-prisma .strip{animation:flow 2.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes flow{to{background-position:-100% 0}}
+
+/* Flux: its own window, with made-up numbers */
+.v-flux{background:linear-gradient(160deg,#10231b,#0a0e0c 70%);align-items:flex-start}
+.v-flux img{width:104%;max-width:none;margin:10% 0 0 9%;border-radius:10px;border:1px solid #24312c;box-shadow:0 18px 40px rgba(0,0,0,.6);
+  transform:rotate(-3deg);transform-origin:0 0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.app:hover .v-flux img{transform:rotate(-3deg) translate(-4%,-3%)}
+
+/* Focal: an iPhone sending its camera to the PC over Wi-Fi */
+.v-focal{background:radial-gradient(75% 65% at 50% 35%,#16303a,#0d1117 75%)}
+.v-focal svg{width:86%;height:auto}
+.v-focal .wave{opacity:.35}
+.app:hover .v-focal .wave,.app:focus-within .v-focal .wave{animation:wave 1.4s ease-in-out infinite}
+.app:hover .v-focal .w2,.app:focus-within .v-focal .w2{animation-delay:.2s}
+.app:hover .v-focal .w3,.app:focus-within .v-focal .w3{animation-delay:.4s}
+@keyframes wave{50%{opacity:1}}
 
 /* motion: the headline and the cards rise in at load on wide screens; on phones the cards rise in as you scroll to them */
 /* scroll motion (motion.js): only when the script runs and motion is allowed */
@@ -92,6 +149,7 @@ h2 a:focus-visible{outline:0}
 @media (min-width:901px){
   .motion .app{animation:rise 1s cubic-bezier(.2,.7,.2,1) backwards}
   .motion .app:nth-child(1){animation-delay:.22s}.motion .app:nth-child(2){animation-delay:.34s}.motion .app:nth-child(3){animation-delay:.46s}
+  .motion .app:nth-child(4){animation-delay:.52s}.motion .app:nth-child(5){animation-delay:.6s}.motion .app:nth-child(6){animation-delay:.68s}.motion .app:nth-child(7){animation-delay:.76s}
 }
 @keyframes rise{from{opacity:0;transform:translateY(32px)}}
 /* once the entrance has played it is taken off, so a later resize or re-layout can never replay it */
@@ -99,17 +157,18 @@ h2 a:focus-visible{outline:0}
 .motion .app.done{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
 footer{margin-top:44px;color:var(--dim);font-size:14.5px}
 footer a{color:var(--dim)}
-@media (prefers-reduced-motion:reduce){h1,.by,.app{animation:none!important}.app,.v-orbit img,.v-gallery .wall{transition:none}.app:hover .reel,.app:focus-within .reel{animation:none}}
+@media (prefers-reduced-motion:reduce){h1,.by,.app{animation:none!important}.app,.v-orbit img,.v-gallery .wall,.v-flux img,.v-hexpad .keys img,.v-hexpad .knobs i{transition:none}
+  .app:hover .reel,.app:focus-within .reel,.v-prisma .fan::before,.v-prisma .fan::after,.v-prisma .strip,.v-focal .wave{animation:none!important}}
 </style>
 </head>
 <body>
 <main>
-<h1>Apps for <span style="--acc:#ff5d93">VR</span>, <span style="--acc:#3d8bfd">VRChat</span> and <span style="--acc:#7fb564">click&#8209;wheel iPods</span>.</h1>
-<p class="by">by <a href="https://github.com/Erik1028">Erik1028</a> · free and open source, for Windows</p>
+<h1>Apps for <span style="--acc:#ff5d93">VR</span>, <span style="--acc:#3d8bfd">VRChat</span>, <span style="--acc:#7fb564">click&#8209;wheel iPods</span> and <span class="desk">the desk around them</span>.</h1>
+<p class="by">by <a href="https://github.com/Erik1028">Erik1028</a> · free Windows apps, source on GitHub</p>
 
-<div class="apps" data-stagger="110">
+<div class="apps" data-stagger="90">
 
-<article class="app" style="--acc:#ff5d93">
+<article class="app wide" style="--acc:#ff5d93">
 <div class="visual v-orbit" aria-hidden="true"><img src="img/watch.png" width="639" height="439" alt=""></div>
 <div class="meta"><img src="img/orbitoverlay.svg" width="48" height="48" alt=""><div>
 <h2><a href="https://erik1028.github.io/OrbitOverlay/">OrbitOverlay</a></h2>
@@ -155,6 +214,72 @@ footer a{color:var(--dim)}
 <span class="rel" data-repo="Erik1028/Mixtape"></span>
 <p>Your click-wheel iPod on Windows, without iTunes.</p>
 <span class="links"><a href="https://erik1028.github.io/Mixtape/">Website</a> · <a href="https://github.com/Erik1028/Mixtape">GitHub</a></span>
+</div></div>
+</article>
+
+<article class="app" style="--acc:#f8764f">
+<div class="visual v-hexpad" aria-hidden="true"><div class="dock"><div class="keys"><img src="img/hexpad-keys.webp" width="564" height="370" alt=""><img src="img/hexpad-idle.webp" width="564" height="370" alt="" loading="lazy"></div><div class="knobs"><i></i><i></i><i></i></div></div></div>
+<div class="meta"><img src="img/hexpad.png" width="48" height="48" alt=""><div>
+<h2><a href="https://erik1028.github.io/ajazz-dock/">Hexpad</a></h2>
+<span class="rel" data-repo="Erik1028/ajazz-dock"></span>
+<p>An app for the Ajazz AKP03E stream dock: any action on any key or knob, live keys and idle clocks.</p>
+<span class="links"><a href="https://erik1028.github.io/ajazz-dock/">Website</a> · <a href="https://github.com/Erik1028/ajazz-dock">GitHub</a></span>
+</div></div>
+</article>
+
+<article class="app" style="--acc:#b151ff">
+<div class="visual v-prisma" aria-hidden="true"><div class="rig"><div class="fans"><span class="fan"></span><span class="fan"></span><span class="fan"></span></div><div class="strip"></div></div></div>
+<div class="meta"><img src="img/prisma.png" width="48" height="48" alt=""><div>
+<h2><a href="https://erik1028.github.io/Prisma/">Prisma</a></h2>
+<span class="rel" data-repo="Erik1028/Prisma"></span>
+<p>All the RGB lighting in your PC from one app: motherboard, RAM, GPU, fans, keyboard and mouse.</p>
+<span class="links"><a href="https://erik1028.github.io/Prisma/">Website</a> · <a href="https://github.com/Erik1028/Prisma">GitHub</a></span>
+</div></div>
+</article>
+
+<article class="app" style="--acc:#34d399">
+<div class="visual v-flux" aria-hidden="true"><img src="img/flux-window.webp" width="720" height="470" alt="" loading="lazy"></div>
+<div class="meta"><img src="img/flux.png" width="48" height="48" alt=""><div>
+<h2><a href="https://erik1028.github.io/Flux/">Flux</a></h2>
+<span class="rel" data-repo="Erik1028/Flux"></span>
+<p>A tiny monitor for your graphics card's memory: which apps hold it, and a ✕ to end one.</p>
+<span class="links"><a href="https://erik1028.github.io/Flux/">Website</a> · <a href="https://github.com/Erik1028/Flux">GitHub</a></span>
+</div></div>
+</article>
+
+<article class="app" style="--acc:#4cc3d9">
+<div class="visual v-focal" aria-hidden="true"><svg viewBox="0 0 360 240" aria-hidden="true">
+<defs>
+<linearGradient id="fcBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e9edf0"/><stop offset="1" stop-color="#aab3bb"/></linearGradient>
+<radialGradient id="fcLens" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#2b4d66"/><stop offset=".55" stop-color="#10273a"/><stop offset="1" stop-color="#050a10"/></radialGradient>
+<linearGradient id="fcScreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a6f86"/><stop offset="1" stop-color="#17324a"/></linearGradient>
+</defs>
+<g transform="rotate(-8 92 128)">
+<rect x="44" y="34" width="98" height="188" rx="20" fill="url(#fcBody)"/>
+<rect x="44" y="34" width="98" height="188" rx="20" fill="none" stroke="#7c8790" stroke-width="2"/>
+<rect x="54" y="44" width="54" height="54" rx="14" fill="#c3cad0" stroke="#8f99a2" stroke-width="1.5"/>
+<circle cx="69" cy="59" r="10.5" fill="#0b0d10"/><circle cx="69" cy="59" r="7.5" fill="url(#fcLens)"/><circle cx="66" cy="56" r="1.8" fill="#9fe7f0"/>
+<circle cx="69" cy="83" r="10.5" fill="#0b0d10"/><circle cx="69" cy="83" r="7.5" fill="url(#fcLens)"/><circle cx="66" cy="80" r="1.8" fill="#9fe7f0"/>
+<circle cx="93" cy="71" r="10.5" fill="#0b0d10"/><circle cx="93" cy="71" r="7.5" fill="url(#fcLens)"/><circle cx="90" cy="68" r="1.8" fill="#9fe7f0"/>
+</g>
+<g fill="none" stroke="#4cc3d9" stroke-width="5" stroke-linecap="round">
+<path class="wave w1" d="M160 116 a14 14 0 0 1 0 22"/>
+<path class="wave w2" d="M170 106 a28 28 0 0 1 0 42"/>
+<path class="wave w3" d="M180 96 a42 42 0 0 1 0 62"/>
+</g>
+<rect x="206" y="62" width="128" height="88" rx="8" fill="#0b0e12" stroke="#2c3440" stroke-width="2"/>
+<rect x="212" y="68" width="116" height="76" rx="4" fill="url(#fcScreen)"/>
+<circle cx="270" cy="98" r="14" fill="#9cc4d2"/>
+<path d="M244 144 q26 -30 52 0 z" fill="#9cc4d2"/>
+<circle cx="318" cy="76" r="3.5" fill="#ff5a5f"/>
+<path d="M258 150 h24 l4 18 h-32 z" fill="#1b2129"/>
+<rect x="244" y="168" width="52" height="5" rx="2.5" fill="#1b2129"/>
+</svg></div>
+<div class="meta"><img src="img/focal.png" width="48" height="48" alt=""><div>
+<h2><a href="https://erik1028.github.io/focal/">Focal</a></h2>
+<span class="rel" data-repo="Erik1028/focal"></span>
+<p>Your iPhone as a wireless webcam for the PC, over Wi-Fi. Nothing to install on the phone.</p>
+<span class="links"><a href="https://erik1028.github.io/focal/">Website</a> · <a href="https://github.com/Erik1028/focal">GitHub</a></span>
 </div></div>
 </article>
 
