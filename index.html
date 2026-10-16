@@ -92,7 +92,9 @@ h2 a:focus-visible{outline:0}
 .reel{transform-box:fill-box;transform-origin:center}
 .app:hover .reel,.app:focus-within .reel{animation:reel 1.4s linear infinite}
 @keyframes reel{to{transform:rotate(360deg)}}
-.app.wide .v-orbit img{width:auto;height:84%;max-width:80%;margin-top:-5%}
+.app.wide .v-orbit img{width:auto;height:84%;max-width:80%;margin-top:-5%;object-fit:contain}
+/* on phones the card is 4:3, too narrow for the watch at 84% of its height: size it by width instead, so it keeps its shape */
+@media (max-width:640px){.app.wide .v-orbit img{width:82%;height:auto;max-width:none;margin-top:-7%}}
 
 /* Hexpad: the AKP03E as it is laid out (the same arrangement and proportions the configurator draws): six
    separate screen keys 2x3, three round buttons under them, a big knob on the right and two small ones below it.
