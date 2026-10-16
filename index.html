@@ -12,6 +12,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#101116">
 <link rel="icon" href="img/orbitoverlay.svg" type="image/svg+xml">
+<script>try{if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("motion")}catch(e){}</script>
 <link rel="preload" href="fonts/permanent-marker.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* An index of three apps. Each card shows the thing itself (the watch over a VR floor, a wall of VRChat photos,
@@ -75,9 +76,21 @@ h2 a:focus-visible{outline:0}
 .app:hover .reel,.app:focus-within .reel{animation:reel 1.4s linear infinite}
 @keyframes reel{to{transform:rotate(360deg)}}
 
+/* motion: the headline and the cards rise in at load on wide screens; on phones the cards rise in as you scroll to them */
+/* scroll motion (motion.js): only when the script runs and motion is allowed */
+.motion [data-reveal]{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+.motion [data-reveal].pre{opacity:0;transform:translateY(40px)}
+.motion h1,.motion .by{animation:rise 1s cubic-bezier(.2,.7,.2,1) backwards}
+.motion .by{animation-delay:.12s}
+@media (min-width:901px){
+  .motion .app{animation:rise 1s cubic-bezier(.2,.7,.2,1) backwards}
+  .motion .app:nth-child(1){animation-delay:.22s}.motion .app:nth-child(2){animation-delay:.34s}.motion .app:nth-child(3){animation-delay:.46s}
+}
+@keyframes rise{from{opacity:0;transform:translateY(32px)}}
+.motion .app.done{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
 footer{margin-top:44px;color:var(--dim);font-size:14.5px}
 footer a{color:var(--dim)}
-@media (prefers-reduced-motion:reduce){.app,.v-orbit img,.v-gallery .wall{transition:none}.app:hover .reel,.app:focus-within .reel{animation:none}}
+@media (prefers-reduced-motion:reduce){h1,.by,.app{animation:none!important}.app,.v-orbit img,.v-gallery .wall{transition:none}.app:hover .reel,.app:focus-within .reel{animation:none}}
 </style>
 </head>
 <body>
@@ -85,7 +98,7 @@ footer a{color:var(--dim)}
 <h1>Apps for <span style="--acc:#ff5d93">VR</span>, <span style="--acc:#3d8bfd">VRChat</span> and <span style="--acc:#00c8aa">click&#8209;wheel iPods</span>.</h1>
 <p class="by">by <a href="https://github.com/Erik1028">Erik1028</a> · free and open source, for Windows</p>
 
-<div class="apps">
+<div class="apps" data-stagger="110">
 
 <article class="app" style="--acc:#ff5d93">
 <div class="visual v-orbit" aria-hidden="true"><img src="img/watch.png" width="639" height="439" alt=""></div>
@@ -130,5 +143,6 @@ footer a{color:var(--dim)}
 
 <footer>Made with an AI assistant and a lot of hands-on testing.</footer>
 </main>
+<script src="motion.js"></script>
 </body>
 </html>
