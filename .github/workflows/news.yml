@@ -1,0 +1,40 @@
+# Keeps What's new (news.html), the releases feed (feed.xml) and the cards' version lines in index.html up to date
+# with the apps' GitHub releases: once a day, and on demand (Actions > News > Run workflow).
+name: News
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: news
+  cancel-in-progress: false
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build from the releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 tools/news.py
+
+      - name: Commit what changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add news.html feed.xml index.html
+          if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "What's new: the latest releases"
+          git push
+          # the site is published from this branch; ask for a build in case a push from Actions doesn't start one
+          gh api -X POST "repos/${{ github.repository }}/pages/builds" >/dev/null || true
