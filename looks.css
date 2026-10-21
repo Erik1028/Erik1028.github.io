@@ -163,3 +163,30 @@ html[data-look="terminal"]{--g:#5dff9b;--gd:rgba(93,255,155,.66);--gf:rgba(93,25
 [data-look="terminal"] ::selection{background:var(--g);color:#030805}
 
 @media (prefers-reduced-motion:reduce){[data-look="terminal"] h1::after{animation:none}.looks button{transition:none}}
+
+/* the "They work together" links in each look */
+[data-look="95"] .together h2{font:700 clamp(22px,3vw,30px)/1.2 Arial,sans-serif;color:#fff}
+[data-look="95"] .tg-sub{color:#fff}
+[data-look="95"] .tg li{background:var(--face);border:0;border-radius:0;box-shadow:var(--raised)}
+[data-look="95"] .tg p{color:#000;font-size:13.5px}
+[data-look="95"] .tg b{color:#000}
+[data-look="95"] .pair img{border-radius:0}
+[data-look="95"] .pair i{height:2px;background:repeating-linear-gradient(90deg,#000 0 2px,transparent 2px 4px);border-radius:0}
+[data-look="95"] .pair i::after{border-radius:0;background:#000080;box-shadow:none}
+[data-look="cyber"] .together h2{font:800 clamp(30px,4vw,48px)/1 var(--cond);text-transform:uppercase;text-shadow:-2px 0 rgba(255,79,79,.7),2px 0 rgba(63,243,240,.7)}
+[data-look="cyber"] .tg-sub{font-family:var(--cm);font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--cd)}
+[data-look="cyber"] .tg li{background:#151214;border:1px solid rgba(255,79,79,.45);border-radius:0;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+[data-look="cyber"] .tg p{color:#c9c4b0;font-size:17px;line-height:1.35}
+[data-look="cyber"] .tg b{color:var(--y);font-weight:700;text-transform:uppercase}
+[data-look="cyber"] .pair img{border-radius:0}
+[data-look="cyber"] .pair i{background:repeating-linear-gradient(90deg,var(--y) 0 6px,transparent 6px 10px);height:3px;border-radius:0}
+[data-look="cyber"] .pair i::after{border-radius:0;background:var(--c);box-shadow:0 0 10px var(--c)}
+[data-look="terminal"] .together h2{font:400 clamp(32px,4.4vw,50px)/1 var(--vt)}
+[data-look="terminal"] .together h2::before{content:"> ";color:var(--gd)}
+[data-look="terminal"] .tg-sub{color:var(--gd)}
+[data-look="terminal"] .tg li{background:transparent;border:1px solid var(--gf);border-radius:0}
+[data-look="terminal"] .tg p{color:var(--gd);font-size:20px;line-height:1.2}
+[data-look="terminal"] .tg b{color:var(--g);font-weight:400}
+[data-look="terminal"] .pair img{border-radius:0;filter:grayscale(1) sepia(1) hue-rotate(75deg) saturate(2.6) brightness(.85)}
+[data-look="terminal"] .pair i{height:0;border-top:2px dashed var(--g);background:none}
+[data-look="terminal"] .pair i::after{border-radius:0;background:var(--g);box-shadow:0 0 8px var(--g);margin-top:-5px}

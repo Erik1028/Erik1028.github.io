@@ -40,7 +40,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);fon
 main{max-width:1180px;margin:0 auto;padding-block:72px 48px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 h1{font-family:var(--display);font-size:clamp(36px,5.4vw,66px);line-height:1.05;margin:0;letter-spacing:-0.03em;max-width:17em;text-wrap:balance}
 h1 span{color:var(--acc)}
-h1 .desk{background:linear-gradient(90deg,#f8764f,#b151ff 40%,#34d399 75%,#4cc3d9);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+h1 .desk{background:linear-gradient(90deg,#3ae0a0,#b151ff 40%,#34d399 75%,#4cc3d9);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .by{color:var(--dim);margin:18px 0 0;font-size:17px}
 .by a{color:var(--text);text-decoration:none;font-weight:600}
 .by a:hover{text-decoration:underline}
@@ -100,21 +100,21 @@ h2 a:focus-visible{outline:0}
    separate screen keys 2x3, three round buttons under them, a big knob on the right and two small ones below it.
    Each key shows its own tile of a picture Hexpad's renderer drew (176 px keys, 18 px apart); on hover they fall
    asleep into the idle clock. */
-.v-hexpad{background:radial-gradient(80% 70% at 60% 30%,#3a1730,#141118 70%)}
+.v-hexpad{background:radial-gradient(80% 70% at 60% 30%,#16323a,#0e0f15 70%)}
 .v-hexpad .dock{position:relative;width:86%;aspect-ratio:1260/797;border-radius:4%/6.3%;
-  background:linear-gradient(160deg,#202027,#0f0f13);border:1px solid #2d2d36;box-shadow:0 18px 36px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);transform:rotate(-4deg)}
+  background:linear-gradient(160deg,#222739,#11141d);border:1px solid #2c3340;box-shadow:0 18px 36px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05);transform:rotate(-4deg)}
 .v-hexpad .dock>*{position:absolute;display:block;aspect-ratio:1}
 .v-hexpad .key{width:17.6%;border-radius:12%;overflow:hidden;background:#000 url(img/hexpad-keys.webp) no-repeat;
-  background-size:320.45% 210.23%;box-shadow:0 0 0 1.5px #050506,0 0 0 2.5px #2c2c35}
+  background-size:320.45% 210.23%;box-shadow:0 0 0 1.5px #050506,0 0 0 2.5px #2a3140}
 .v-hexpad .key::after{content:"";position:absolute;inset:0;background:url(img/hexpad-idle.webp) no-repeat;background-size:inherit;background-position:inherit;opacity:0;transition:opacity .5s ease}
 .app:hover .v-hexpad .key::after,.app:focus-within .v-hexpad .key::after{opacity:1}
 .v-hexpad .k1,.v-hexpad .k4{left:3.4%}.v-hexpad .k2,.v-hexpad .k5{left:25.4%}.v-hexpad .k3,.v-hexpad .k6{left:47.4%}
 .v-hexpad .k1,.v-hexpad .k2,.v-hexpad .k3{top:10.3%}.v-hexpad .k4,.v-hexpad .k5,.v-hexpad .k6{top:45.1%}
 .v-hexpad .k1,.v-hexpad .k4{background-position-x:0}.v-hexpad .k2,.v-hexpad .k5{background-position-x:50%}.v-hexpad .k3,.v-hexpad .k6{background-position-x:100%}
 .v-hexpad .k1,.v-hexpad .k2,.v-hexpad .k3{background-position-y:0}.v-hexpad .k4,.v-hexpad .k5,.v-hexpad .k6{background-position-y:100%}
-.v-hexpad .btn{width:8.1%;top:77.7%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#26262d,#111115);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #08080a}
+.v-hexpad .btn{width:8.1%;top:77.7%;border-radius:50%;background:radial-gradient(circle at 40% 35%,#262c3b,#10131b);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 0 1.5px #08080a}
 .v-hexpad .b1{left:8.15%}.v-hexpad .b2{left:30.15%}.v-hexpad .b3{left:52.15%}
-.v-hexpad .knob{border-radius:50%;background:radial-gradient(circle at 35% 30%,#3d3d48,#16161b 65%);box-shadow:0 3px 8px rgba(0,0,0,.6),0 0 0 1.5px #0a0a0c;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.v-hexpad .knob{border-radius:50%;background:radial-gradient(circle at 35% 30%,#3a4152,#181c27 65%);box-shadow:0 3px 8px rgba(0,0,0,.6),0 0 0 1.5px #0a0a0c;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
 .v-hexpad .knob::after{content:"";position:absolute;left:50%;top:9%;width:2px;height:22%;margin-left:-1px;border-radius:1px;background:#d0d0d8}
 .v-hexpad .big{width:21.3%;left:72.35%;top:25.6%}
 .v-hexpad .small{width:10.8%;top:74.6%}.v-hexpad .s1{left:69.8%}.v-hexpad .s2{left:85.4%}
@@ -160,6 +160,24 @@ footer{margin-top:44px;color:var(--dim);font-size:14.5px}
 footer a{color:var(--dim)}
 @media (prefers-reduced-motion:reduce){h1,.by,.app{animation:none!important}.app,.v-orbit img,.v-gallery .wall,.v-flux img,.v-prisma img,.v-hexpad .key::after,.v-hexpad .knob{transition:none}
   .app:hover .reel,.app:focus-within .reel,.v-focal .wave{animation:none!important}}
+
+/* They work together: each link two app icons joined by a line in their two colours, a dot running along it */
+.together{margin-top:64px}
+.together h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-0.02em;line-height:1.1}
+.tg-sub{color:var(--dim);margin:10px 0 0}
+.tg{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.tg li{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px 18px;min-width:0}
+.tg p{margin:12px 0 0;color:var(--dim);font-size:15.5px}
+.tg b{color:var(--text);font-weight:600}
+.pair{display:flex;align-items:center;gap:0}
+.pair img{width:40px;height:40px;border-radius:10px;flex:none;position:relative;z-index:1}
+.pair i{position:relative;flex:1;max-width:120px;height:2px;margin:0 10px;background:linear-gradient(90deg,var(--a),var(--b));border-radius:2px}
+.pair i::after{content:"";position:absolute;top:50%;left:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#fff;
+  box-shadow:0 0 10px var(--b);animation:flow 2.6s ease-in-out infinite alternate}
+.tg li:nth-child(2) .pair i::after{animation-delay:-.6s}.tg li:nth-child(3) .pair i::after{animation-delay:-1.2s}
+.tg li:nth-child(4) .pair i::after{animation-delay:-1.8s}.tg li:nth-child(5) .pair i::after{animation-delay:-2.3s}
+@keyframes flow{to{left:100%;box-shadow:0 0 10px var(--a)}}
+@media (prefers-reduced-motion:reduce){.pair i::after{animation:none;left:50%}}
 </style>
 </head>
 <body>
@@ -225,7 +243,7 @@ footer a{color:var(--dim)}
 </div></div>
 </article>
 
-<article class="app" style="--acc:#f8764f">
+<article class="app" style="--acc:#3ae0a0">
 <div class="tb" aria-hidden="true"><img src="img/hexpad.png" width="16" height="16" alt=""><b>Hexpad</b><span class="tbb"><i></i><i></i><i></i></span></div>
 <div class="visual v-hexpad" aria-hidden="true"><div class="dock"><i class="key k1"></i><i class="key k2"></i><i class="key k3"></i><i class="key k4"></i><i class="key k5"></i><i class="key k6"></i><i class="btn b1"></i><i class="btn b2"></i><i class="btn b3"></i><i class="knob big"></i><i class="knob small s1"></i><i class="knob small s2"></i></div></div>
 <div class="meta"><img src="img/hexpad.png" width="48" height="48" alt=""><div>
@@ -296,6 +314,18 @@ footer a{color:var(--dim)}
 </article>
 
 </div>
+
+<section class="together" aria-labelledby="tg-h">
+<h2 id="tg-h">They work together</h2>
+<p class="tg-sub">On the desk and in VR, the apps talk to each other.</p>
+<ul class="tg" data-stagger="80">
+<li style="--a:#ff5d93;--b:#7fb564"><div class="pair" aria-hidden="true"><img src="img/orbitoverlay.svg" width="40" height="40" alt=""><i></i><img src="img/mixtape.png" width="40" height="40" alt=""></div><p><b>OrbitOverlay + Mixtape.</b> Now playing on the watch is Mixtape&#8217;s song, with its cover and buttons; a tap opens Mixtape&#8217;s whole player in VR.</p></li>
+<li style="--a:#ff5d93;--b:#3d8bfd"><div class="pair" aria-hidden="true"><img src="img/orbitoverlay.svg" width="40" height="40" alt=""><i></i><img src="img/vrgallery.png" width="40" height="40" alt=""></div><p><b>OrbitOverlay + VR Gallery.</b> A photo you take in VRChat pops up on the watch, and one from this day a year ago; Open in VR Gallery takes it to the album.</p></li>
+<li style="--a:#ff5d93;--b:#3ae0a0"><div class="pair" aria-hidden="true"><img src="img/orbitoverlay.svg" width="40" height="40" alt=""><i></i><img src="img/hexpad.png" width="40" height="40" alt=""></div><p><b>OrbitOverlay + Hexpad.</b> The stream dock&#8217;s keys, live on the watch and on a panel in VR, pressed with the laser.</p></li>
+<li style="--a:#ff5d93;--b:#00c8aa"><div class="pair" aria-hidden="true"><img src="img/orbitoverlay.svg" width="40" height="40" alt=""><i></i><img src="img/prisma.png" width="40" height="40" alt=""></div><p><b>OrbitOverlay + Prisma.</b> The RGB widget runs the PC&#8217;s lighting through Prisma: on and off, brightness, quick effects and colours.</p></li>
+<li style="--a:#3ae0a0;--b:#00c8aa"><div class="pair" aria-hidden="true"><img src="img/hexpad.png" width="40" height="40" alt=""><i></i><img src="img/prisma.png" width="40" height="40" alt=""></div><p><b>Hexpad + Prisma.</b> A key or a knob on the dock changes Prisma&#8217;s colours, effects and brightness.</p></li>
+</ul>
+</section>
 
 <footer>Made with an AI assistant and a lot of hands-on testing.</footer>
 </main>
