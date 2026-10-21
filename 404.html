@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found · Erik1028</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#101116">
+<link rel="icon" href="/img/orbitoverlay.svg" type="image/svg+xml">
+<script>
+/* GitHub Pages addresses care about capitals: /mixtape/ is not /Mixtape/. A first part that names one of the apps in
+   other letters (or by an old name) goes straight to the right address, the rest of the path kept. */
+(function () {
+  var APPS = { orbitoverlay: 'OrbitOverlay', orbit: 'OrbitOverlay', vrgallery: 'VRGallery', 'vr-gallery': 'VRGallery', mixtape: 'Mixtape',
+    'ajazz-dock': 'ajazz-dock', hexpad: 'ajazz-dock', prisma: 'Prisma', flux: 'Flux', focal: 'focal', phonecam: 'focal' };
+  var parts = location.pathname.split('/'), seg = parts[1] || '', to = APPS[seg.toLowerCase()];
+  if (to && to !== seg) { parts[1] = to; location.replace(parts.join('/') + location.search + location.hash); return; }
+  window.HERE = to || '';
+  try { var l = localStorage.getItem('hub-look'); if (/^(95|cyber|terminal)$/.test(l)) document.documentElement.setAttribute('data-look', l); } catch (e) {}
+})();
+</script>
+<style>
+/* The hub's 404: OrbitOverlay's clock tile stuck at 4:04, what may have happened, and the way back. It wears the look
+   picked on the hub (Modern, Windows 95, Cyber or Terminal), like the watch. Paths are absolute: this page answers
+   for any address on erik1028.github.io. */
+@font-face{font-family:"Barlow Condensed";src:url(/fonts/barlow-condensed-700.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Barlow Condensed";src:url(/fonts/barlow-condensed-800.woff2) format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url(/fonts/ibm-plex-mono-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"VT323";src:url(/fonts/vt323.woff2) format("woff2");font-display:swap}
+:root{
+  color-scheme:dark;
+  --bg:#101116; --card:#17181f; --line:#262833; --text:#eceef4; --dim:#9aa0b0; --acc:#ff5d93;
+  --sans:"Segoe UI Variable Text","Segoe UI Variable","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --display:"Segoe UI Variable Display","Segoe UI Variable","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --mono:"Cascadia Mono",Consolas,ui-monospace,"SF Mono",Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+main{max-width:1000px;margin:0 auto;min-height:100vh;display:grid;grid-template-columns:auto minmax(0,1fr);gap:40px 56px;align-content:center;align-items:start;
+  padding-block:64px;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a{color:var(--text)}
+.tb{display:none}
+
+/* the clock tile, as the watch draws it: date line, the time in two big rows, the seconds small */
+.tile{width:220px;aspect-ratio:1;border-radius:24px;padding:16px 18px;position:relative;color:#fff;
+  background:linear-gradient(155deg,#1f7a78,#18566a 55%,#173a58);box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12)}
+.tile .top{display:flex;justify-content:space-between;gap:8px;white-space:nowrap;font-weight:700;font-size:13px;opacity:.9}
+.tile .time{font-family:var(--display);font-weight:800;font-size:92px;line-height:.86;letter-spacing:-0.03em;margin-top:14px}
+.tile .time span{display:block}
+.tile .sec{position:absolute;right:18px;bottom:18px;font-weight:700;font-size:15px;opacity:.85;font-variant-numeric:tabular-nums}
+
+.code{margin:0;color:var(--acc);font-family:var(--mono);font-size:15px;letter-spacing:.06em}
+h1{font-family:var(--display);font-size:clamp(34px,5vw,54px);line-height:1.05;letter-spacing:-0.03em;margin:6px 0 0;text-wrap:balance}
+.say p{max-width:36em;color:var(--dim);margin:16px 0 0}
+.say p code{font-family:var(--mono);font-size:.88em;color:var(--text)}
+.guess{padding:12px 14px;border-left:3px solid var(--acc);background:rgba(255,93,147,.08);border-radius:0 10px 10px 0;color:var(--text)!important}
+.apps{list-style:none;padding:0;margin:28px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:10px}
+.apps a{display:flex;align-items:center;gap:11px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);text-decoration:none;min-width:0}
+.apps a:hover{border-color:#3a3d4b}
+.apps a:focus-visible{outline:2px solid var(--text);outline-offset:2px}
+.apps img{width:34px;height:34px;border-radius:8px;flex:none}
+.apps b{display:block;font-weight:600;font-size:15.5px;line-height:1.2}
+.apps small{display:block;color:var(--dim);font-size:13.5px;line-height:1.3}
+.back{font-size:15.5px}
+.back a{color:var(--text);font-weight:600}
+@media (max-width:720px){main{grid-template-columns:1fr;gap:28px;align-content:start;padding-top:40px}.tile{width:168px;border-radius:20px}.tile .time{font-size:70px}}
+
+/* ---------- Windows 95: two windows on the teal desktop ---------- */
+[data-look="95"] body{background:#008080;color:#000;font-family:Tahoma,"Microsoft Sans Serif","MS Sans Serif",Arial,sans-serif;font-size:14px;line-height:1.45;-webkit-font-smoothing:auto}
+[data-look="95"] main{align-items:start;gap:24px}
+[data-look="95"] .tile,[data-look="95"] .say{background:#c0c0c0;color:#000;border-radius:0;padding:3px;box-shadow:inset -1px -1px #000,inset 1px 1px #dfdfdf,inset -2px -2px #808080,inset 2px 2px #fff}
+[data-look="95"] .tb{display:flex;align-items:center;justify-content:space-between;height:20px;padding:0 3px 0 5px;background:linear-gradient(90deg,#000080,#1084d0);color:#fff;font-weight:700;font-size:12.5px}
+[data-look="95"] .tb i{width:16px;height:14px;background:#c0c0c0;box-shadow:inset -1px -1px #000,inset 1px 1px #fff,inset -2px -2px #808080;color:#000;font:700 11px/14px Arial,sans-serif;font-style:normal;text-align:center}
+[data-look="95"] .tile{width:200px;aspect-ratio:auto}
+[data-look="95"] .tile .top,[data-look="95"] .tile .time,[data-look="95"] .tile .sec{position:static;margin:0}
+[data-look="95"] .tile .top{display:none}
+[data-look="95"] .tile .time{margin:8px;background:#000;color:#00ff40;font:400 64px/1 "VT323",Consolas,monospace;letter-spacing:.04em;text-align:center;padding:10px 0;box-shadow:inset 1px 1px #808080,inset -1px -1px #fff}
+[data-look="95"] .tile .time span{display:inline}
+[data-look="95"] .tile .time span+span::before{content:":"}
+[data-look="95"] .tile .sec{display:block;text-align:center;opacity:1;font-weight:400;font-size:13px;padding:0 0 8px}
+[data-look="95"] .say > :not(.tb){margin-left:14px;margin-right:14px}
+[data-look="95"] .say{padding-bottom:16px}
+[data-look="95"] .code{display:none}
+[data-look="95"] h1{font-family:inherit;font-size:20px;letter-spacing:0;margin-top:16px;padding-left:44px;position:relative}
+[data-look="95"] h1::before{content:"!";position:absolute;left:0;top:-4px;width:32px;height:28px;background:#ffd800;clip-path:polygon(50% 0,100% 100%,0 100%);font:700 17px/34px Arial,sans-serif;text-align:center}
+[data-look="95"] .say p{color:#000;font-size:14px}
+[data-look="95"] .say p code{color:#000;font-family:"Courier New",monospace}
+[data-look="95"] .guess{background:#fff;border:0;border-radius:0;box-shadow:inset 1px 1px #808080,inset -1px -1px #fff}
+[data-look="95"] .apps a{border:0;border-radius:0;background:#c0c0c0;box-shadow:inset -1px -1px #000,inset 1px 1px #fff,inset -2px -2px #808080;color:#000;padding:8px 10px}
+[data-look="95"] .apps a:hover{background:#d4d0c8}
+[data-look="95"] .apps a:active{box-shadow:inset 1px 1px #000,inset -1px -1px #fff,inset 2px 2px #808080}
+[data-look="95"] .apps img{border-radius:0;width:32px;height:32px}
+[data-look="95"] .apps small{color:#000;font-size:12px}
+[data-look="95"] .apps b{font-weight:700;font-size:14px}
+[data-look="95"] .back a,[data-look="95"] a{color:#000080}
+
+/* ---------- Cyber: a lost signal on the HUD ---------- */
+[data-look="cyber"]{--y:#fbe600;--r:#ff4f4f;--c:#3ff3f0;--ct:#f2efe0;--cd:#a39d8e;--cond:"Barlow Condensed","Arial Narrow",sans-serif;--plex:"IBM Plex Mono",var(--mono)}
+[data-look="cyber"] body{background:#0c0a0b linear-gradient(rgba(255,79,79,.05) 1px,transparent 1px) 0 0/100% 28px;color:var(--ct);font-family:var(--cond);font-size:19px}
+[data-look="cyber"] .tile{border-radius:0;background:#151214;color:var(--y);box-shadow:inset 0 0 0 1px rgba(251,230,0,.45);clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+[data-look="cyber"] .tile .top{font-family:var(--plex);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--r)}
+@media (max-width:720px){[data-look="cyber"] .tile .top{font-size:10px;letter-spacing:.04em}}
+[data-look="cyber"] .tile .time{font-family:var(--cond);font-weight:800;letter-spacing:0;text-shadow:3px 0 rgba(255,79,79,.6),-3px 0 rgba(63,243,240,.45)}
+[data-look="cyber"] .tile .sec{font-family:var(--plex);color:var(--c)}
+[data-look="cyber"] .code{font-family:var(--plex);color:var(--r);text-transform:uppercase;letter-spacing:.14em}
+[data-look="cyber"] .code::before{content:"// "}
+[data-look="cyber"] h1{font-family:var(--cond);font-weight:800;text-transform:uppercase;letter-spacing:.01em;color:var(--y);font-size:clamp(40px,6vw,66px);line-height:.95}
+[data-look="cyber"] .say p{color:var(--cd);font-family:var(--cond);font-size:19px}
+[data-look="cyber"] .say p code{font-family:var(--plex);color:var(--c)}
+[data-look="cyber"] .guess{border-left-color:var(--y);background:rgba(251,230,0,.07);border-radius:0;color:var(--ct)!important}
+[data-look="cyber"] .apps a{border:0;border-radius:0;background:#151214;box-shadow:inset 3px 0 0 var(--r);clip-path:polygon(0 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%)}
+[data-look="cyber"] .apps a:hover{background:#1d181a;box-shadow:inset 3px 0 0 var(--y)}
+[data-look="cyber"] .apps b{font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:17px;color:var(--ct)}
+[data-look="cyber"] .apps small{font-family:var(--plex);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--cd)}
+[data-look="cyber"] .apps img{border-radius:0}
+[data-look="cyber"] a,[data-look="cyber"] .back a{color:var(--c)}
+
+/* ---------- Terminal: the shell says what happened ---------- */
+[data-look="terminal"]{--g:#5dff9b;--gd:rgba(93,255,155,.66);--gf:rgba(93,255,155,.3)}
+[data-look="terminal"] body{background:#030805;color:var(--g);font-family:"VT323","Cascadia Mono",Consolas,monospace;font-size:22px;line-height:1.25;text-shadow:0 0 6px rgba(93,255,155,.4)}
+[data-look="terminal"] .tile{border-radius:0;background:transparent;color:var(--g);box-shadow:none;border:1px solid var(--gf)}
+[data-look="terminal"] .tile .top{font-weight:400;font-size:18px;opacity:1;color:var(--gd)}
+[data-look="terminal"] .tile .time{font-family:inherit;font-weight:400;letter-spacing:0;font-size:96px}
+[data-look="terminal"] .tile .sec{font-weight:400;font-size:18px}
+[data-look="terminal"] .code{font-family:inherit;color:var(--gd);font-size:20px;letter-spacing:0}
+[data-look="terminal"] .code::before{content:"$ cd " attr(data-path);color:var(--g)}
+[data-look="terminal"] .code::after{content:"\A bash: cd: no such file or directory";white-space:pre}
+[data-look="terminal"] .code span{display:none}
+[data-look="terminal"] h1{font-family:inherit;font-weight:400;letter-spacing:0;font-size:clamp(36px,5vw,54px);line-height:1}
+[data-look="terminal"] .say p{color:var(--gd);font-size:21px}
+[data-look="terminal"] .say p code{font-family:inherit;color:var(--g);font-size:1em}
+[data-look="terminal"] .guess{border-left:1px solid var(--g);background:transparent;border-radius:0;color:var(--g)!important}
+[data-look="terminal"] .apps a{border:1px solid var(--gf);border-radius:0;background:transparent;color:var(--g)}
+[data-look="terminal"] .apps a:hover{background:rgba(93,255,155,.08)}
+[data-look="terminal"] .apps img{filter:grayscale(1) sepia(1) hue-rotate(80deg) saturate(3);border-radius:0;opacity:.9}
+[data-look="terminal"] .apps b{font-weight:400;font-size:22px}
+[data-look="terminal"] .apps small{color:var(--gd);font-size:17px}
+[data-look="terminal"] a,[data-look="terminal"] .back a{color:var(--g);font-weight:400}
+</style>
+</head>
+<body>
+<main>
+<div class="tile" aria-hidden="true">
+<div class="tb">Clock<i>&times;</i></div>
+<div class="top"><span>Not found</span><span>VR 4:04</span></div>
+<div class="time"><span>04</span><span>04</span></div>
+<div class="sec">04</div>
+</div>
+
+<div class="say">
+<div class="tb" aria-hidden="true">Erik1028<i>&times;</i></div>
+<p class="code" id="code"><span>Error 404</span></p>
+<h1>This page isn't here.</h1>
+<p>The link may be old, or it was typed with different capitals: addresses here care about them (<code>/Mixtape/</code> works, <code>/mixtape/</code> would not). Every app is still one tap away:</p>
+<p class="guess" id="guess" hidden></p>
+<ul class="apps">
+<li><a href="/OrbitOverlay/"><img src="/img/orbitoverlay.svg" width="34" height="34" alt=""><span><b>OrbitOverlay</b><small>SteamVR overlay</small></span></a></li>
+<li><a href="/VRGallery/"><img src="/img/vrgallery.png" width="34" height="34" alt=""><span><b>VR Gallery</b><small>VRChat photo album</small></span></a></li>
+<li><a href="/Mixtape/"><img src="/img/mixtape.png" width="34" height="34" alt=""><span><b>Mixtape</b><small>Click-wheel iPods</small></span></a></li>
+<li><a href="/ajazz-dock/"><img src="/img/hexpad.png" width="34" height="34" alt=""><span><b>Hexpad</b><small>Ajazz stream dock</small></span></a></li>
+<li><a href="/Prisma/"><img src="/img/prisma.png" width="34" height="34" alt=""><span><b>Prisma</b><small>RGB lighting</small></span></a></li>
+<li><a href="/Flux/"><img src="/img/flux.png" width="34" height="34" alt=""><span><b>Flux</b><small>GPU memory monitor</small></span></a></li>
+<li><a href="/focal/"><img src="/img/focal.png" width="34" height="34" alt=""><span><b>Focal</b><small>iPhone as a webcam</small></span></a></li>
+</ul>
+<p class="back"><a href="/">All apps</a> · <a href="/news.html">What's new</a></p>
+</div>
+</main>
+<script>
+(function () {
+  var NAMES = { OrbitOverlay: 'OrbitOverlay', VRGallery: 'VR Gallery', Mixtape: 'Mixtape', 'ajazz-dock': 'Hexpad', Prisma: 'Prisma', Flux: 'Flux', focal: 'Focal' };
+  var path = decodeURIComponent(location.pathname);
+  document.getElementById('code').setAttribute('data-path', path.length > 40 ? path.slice(0, 39) + '…' : path);
+  // inside an app's site, but not a page it has: that app's home page first
+  if (window.HERE) {
+    var g = document.getElementById('guess');
+    g.innerHTML = 'You were on <a href="/' + window.HERE + '/">' + NAMES[window.HERE] + '</a>’s site; its home page has everything that was there.';
+    g.hidden = false;
+  }
+  // the seconds of a clock that stopped at 4:04 still run
+  var sec = document.querySelector('.tile .sec'), t0 = Date.now() - 4000;
+  if (sec && !matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(function () {
+    var s = Math.floor((Date.now() - t0) / 1000) % 60; sec.textContent = (s < 10 ? '0' : '') + s;
+  }, 250);
+})();
+</script>
+</body>
+</html>
