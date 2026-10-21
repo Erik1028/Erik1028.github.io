@@ -21,7 +21,7 @@ APPS = [
     ('OrbitOverlay', 'OrbitOverlay', '#ff5d93', 'img/orbitoverlay.svg', 'OrbitOverlay/'),
     ('VRGallery', 'VR Gallery', '#3d8bfd', 'img/vrgallery.png', 'VRGallery/'),
     ('Mixtape', 'Mixtape', '#7fb564', 'img/mixtape.png', 'Mixtape/'),
-    ('ajazz-dock', 'Hexpad', '#f8764f', 'img/hexpad.png', 'ajazz-dock/'),
+    ('ajazz-dock', 'Hexpad', '#3ae0a0', 'img/hexpad.png', 'ajazz-dock/'),
     ('Prisma', 'Prisma', '#00c8aa', 'img/prisma.png', 'Prisma/'),
     ('Flux', 'Flux', '#34d399', 'img/flux.png', 'Flux/'),
     ('focal', 'Focal', '#4fd2f0', 'img/focal.png', 'focal/'),
@@ -142,6 +142,55 @@ def fmt(d):
 E = html.escape
 
 
+def calendar(entries):
+    """A GitHub-style grid: a column a week (Monday on top), a square a day, coloured by the apps released that day
+    (two or more: stripes of each). From the first release's week to the newest one's, so it only changes with a release."""
+    by_day = {}
+    for e in entries:
+        by_day.setdefault(e['when'][:10], []).append(e)
+    days = sorted(by_day)
+    first, last = day(days[0]).date(), day(days[-1]).date()
+    start = first - dt.timedelta(days=first.weekday())
+    end = last + dt.timedelta(days=6 - last.weekday())
+    weeks = (end - start).days // 7 + 1
+    cells, months = [], []
+    d = start
+    while d <= end:
+        iso = d.isoformat()
+        if d.day == 1 or d == start:
+            col = (d - start).days // 7
+            if not months or months[-1][0] != col:
+                months.append((col, d.strftime('%b')))
+        rel = sorted(by_day.get(iso, []), key=lambda e: e['when'])
+        if rel and first <= d <= last:
+            accs = []
+            for e in rel:
+                if e['acc'] not in accs:
+                    accs.append(e['acc'])
+            if len(accs) == 1:
+                bg = accs[0]
+            else:
+                n = len(accs)
+                bg = 'linear-gradient(135deg,' + ','.join(f'{c} {i * 100 / n:.0f}% {(i + 1) * 100 / n:.0f}%' for i, c in enumerate(accs)) + ')'
+            label = fmt(day(iso)) + ': ' + ', '.join(f'{e["app"]} {e["tag"]}' for e in rel)
+            cells.append(f'<a class="d on" href="#d-{iso}" style="background:{bg}" title="{E(label)}" aria-label="{E(label)}"></a>')
+        elif first <= d <= last:
+            cells.append('<span class="d"></span>')
+        else:
+            cells.append('<span class="d out"></span>')
+        d += dt.timedelta(days=1)
+    mlabels = ''.join(f'<span style="--c:{c}">{m}</span>' for c, m in months)
+    key = ''.join(f'<span style="--acc:{acc}"><i></i>{E(name)}</span>' for repo, name, acc, *_ in APPS)
+    span = (last - first).days + 1
+    return (f'<section class="cal" aria-label="Releases by day">'
+            f'<p class="cal-sum"><b>{len(entries)} releases</b> in {span} days, since {fmt(day(days[0]))}.</p>'
+            f'<div class="cal-scroll"><div class="cal-box" style="--weeks:{weeks}">'
+            f'<div class="cal-m" aria-hidden="true">{mlabels}</div>'
+            f'<div class="cal-w" aria-hidden="true"><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span><span></span></div>'
+            f'<div class="cal-g">{"".join(cells)}</div></div></div>'
+            f'<p class="cal-key">{key}</p></section>')
+
+
 def build(src=None):
     entries, latest = [], {}
     for repo, name, acc, icon, page in APPS:
@@ -170,14 +219,17 @@ def build(src=None):
     for repo, name, acc, icon, page in APPS:
         chips.append(f'<button type="button" aria-pressed="false" data-app="{repo}" style="--acc:{acc}"><img src="{icon}" width="20" height="20" alt="">'
                      f'{E(name)} <span>{counts[repo]}</span></button>')
-    rows, month = [], None
+    rows, month, seen_days = [], None, set()
     for e in entries:
         d = day(e['when'])
         m = d.strftime('%B %Y')
         if m != month:
             month = m
             rows.append(f'<h2 class="month">{m}</h2>')
-        parts = [f'<article class="entry" data-app="{e["repo"]}" style="--acc:{e["acc"]}">',
+        did = e['when'][:10]
+        idattr = f' id="d-{did}"' if did not in seen_days else ''
+        seen_days.add(did)
+        parts = [f'<article class="entry"{idattr} data-app="{e["repo"]}" style="--acc:{e["acc"]}">',
                  f'<time datetime="{e["when"][:10]}">{fmt(d)}</time><div class="body">',
                  f'<div class="hd"><a href="{e["page"]}"><img src="{e["icon"]}" width="24" height="24" alt="">{E(e["app"])}</a>'
                  f'<code>{E(e["tag"])}</code>{"<span class=pre>pre-release</span>" if e["pre"] else ""}</div>']
@@ -192,7 +244,7 @@ def build(src=None):
         parts.append(f'<a class="more" href="{E(e["url"])}">Release notes</a></div></article>')
         rows.append(''.join(parts))
     feeds = ' · '.join(f'<a href="https://github.com/Erik1028/{repo}/releases.atom">{E(name)}</a>' for repo, name, *_ in APPS)
-    page = PAGE.replace('{{CHIPS}}', '\n'.join(chips)).replace('{{ROWS}}', '\n'.join(rows)).replace('{{FEEDS}}', feeds) \
+    page = PAGE.replace('{{CAL}}', calendar(entries)).replace('{{CHIPS}}', '\n'.join(chips)).replace('{{ROWS}}', '\n'.join(rows)).replace('{{FEEDS}}', feeds) \
         .replace('{{COUNT}}', str(len(entries)))
     with open(os.path.join(ROOT, 'news.html'), 'w', encoding='utf-8') as f:
         f.write(page)
@@ -267,6 +319,23 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acc,#fff);outline-o
 .crumb a:hover{color:var(--text)}
 h1{font-family:var(--display);font-size:clamp(36px,5vw,56px);line-height:1.05;letter-spacing:-0.03em;margin:22px 0 0}
 .by{color:var(--dim);margin:14px 0 0}
+.cal{margin-top:26px}
+.cal-sum{margin:0 0 12px;color:var(--dim);font-size:15.5px}
+.cal-sum b{color:var(--text)}
+.cal-scroll{overflow-x:auto;padding-bottom:4px}
+.cal-box{--s:15px;--gap:3px;display:grid;grid-template-columns:30px auto;grid-template-rows:18px auto;width:max-content}
+.cal-m{grid-column:2;position:relative;height:18px;font-size:12px;color:var(--dim)}
+.cal-m span{position:absolute;left:calc(var(--c) * (var(--s) + var(--gap)));top:0}
+.cal-w{grid-row:2;display:grid;grid-template-rows:repeat(7,var(--s));gap:var(--gap);font-size:11px;color:var(--dim);line-height:var(--s)}
+.cal-g{grid-row:2;grid-column:2;display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,var(--s));grid-auto-columns:var(--s);gap:var(--gap)}
+.cal-g .d{display:block;border-radius:4px;background:#1d1f28}
+.cal-g .d.out{background:transparent}
+.cal-g a.d{outline-offset:2px;transition:transform .15s}
+.cal-g a.d:hover{transform:scale(1.35);position:relative;z-index:1}
+.cal-key{display:flex;flex-wrap:wrap;gap:6px 14px;margin:12px 0 0;font-size:13.5px;color:var(--dim)}
+.cal-key span{display:inline-flex;align-items:center;gap:6px}
+.cal-key i{width:11px;height:11px;border-radius:3px;background:var(--acc)}
+@media (prefers-reduced-motion:reduce){.cal-g a.d{transition:none}}
 .chips{display:flex;gap:8px;margin:28px 0 8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
 .chips button{flex:none;display:inline-flex;align-items:center;gap:8px;font:600 14.5px/1 var(--sans);color:var(--text);background:var(--card);border:1px solid var(--line);
   border-radius:999px;padding:0 14px 0 12px;min-height:40px;cursor:pointer;transition:border-color .2s,background .2s}
@@ -303,6 +372,7 @@ footer a{color:var(--dim)}
 <nav class="crumb"><a href="./">← All apps</a></nav>
 <h1>What's new</h1>
 <p class="by">Every release of every app, newest first. Follow them all with the <a href="feed.xml">feed</a> (RSS / Atom).</p>
+{{CAL}}
 <div class="chips" role="group" aria-label="Show the releases of">
 {{CHIPS}}
 </div>
