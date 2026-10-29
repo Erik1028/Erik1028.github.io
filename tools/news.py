@@ -19,7 +19,7 @@ SITE = 'https://erik1028.github.io/'
 # repo, name on the hub, accent, icon, page (the cards' order)
 APPS = [
     ('OrbitOverlay', 'OrbitOverlay', '#ff5d93', 'img/orbitoverlay.svg', 'OrbitOverlay/'),
-    ('fbtcal', 'fbtcal', '#a743e8', 'img/fbtcal.png', 'fbtcal/'),
+    ('fbtcal', 'FBTcal', '#a743e8', 'img/fbtcal.png', 'fbtcal/'),
     ('VRGallery', 'VR Gallery', '#3d8bfd', 'img/vrgallery.png', 'VRGallery/'),
     ('Mixtape', 'Mixtape', '#7fb564', 'img/mixtape.png', 'Mixtape/'),
     ('ajazz-dock', 'Hexpad', '#3ae0a0', 'img/hexpad.png', 'ajazz-dock/'),
@@ -260,7 +260,7 @@ def build(src=None):
                      f'<updated>{e["when"]}</updated><published>{e["when"]}</published>'
                      f'<category term="{X(e["app"])}"/><summary>{X(text)}</summary></entry>')
     feed = ('<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom">'
-            f'<title>Erik1028\'s apps: new releases</title><subtitle>OrbitOverlay, fbtcal, VR Gallery, Mixtape, Hexpad, Prisma, Flux and Focal</subtitle>'
+            f'<title>Erik1028\'s apps: new releases</title><subtitle>OrbitOverlay, FBTcal, VR Gallery, Mixtape, Hexpad, Prisma, Flux and Focal</subtitle>'
             f'<link href="{SITE}news.html"/><link rel="self" href="{SITE}feed.xml"/><id>{SITE}news.html</id>'
             f'<updated>{entries[0]["when"]}</updated><author><name>Erik1028</name><uri>https://github.com/Erik1028</uri></author>\n'
             + '\n'.join(items) + '\n</feed>\n')
@@ -286,7 +286,7 @@ PAGE = '''<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What's new · Erik1028's apps</title>
-<meta name="description" content="Every release of OrbitOverlay, fbtcal, VR Gallery, Mixtape, Hexpad, Prisma, Flux and Focal, newest first.">
+<meta name="description" content="Every release of OrbitOverlay, FBTcal, VR Gallery, Mixtape, Hexpad, Prisma, Flux and Focal, newest first.">
 <link rel="canonical" href="https://erik1028.github.io/news.html">
 <link rel="alternate" type="application/atom+xml" title="Erik1028's apps: new releases" href="feed.xml">
 <meta property="og:type" content="website">
