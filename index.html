@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Erik1028 · apps for VR, VRChat, iPods and the desk around them</title>
-<meta name="description" content="Free Windows apps by Erik1028: OrbitOverlay (SteamVR overlay), VR Gallery (VRChat photo album), Mixtape (click-wheel iPods), Hexpad (Ajazz stream dock), Prisma (RGB lighting), Flux (GPU memory monitor) and Focal (iPhone as a webcam).">
+<meta name="description" content="Free Windows apps by Erik1028: OrbitOverlay (SteamVR overlay), fbtcal (VRChat full-body calibration), VR Gallery (VRChat photo album), Mixtape (click-wheel iPods), Hexpad (Ajazz stream dock), Prisma (RGB lighting), Flux (GPU memory monitor) and Focal (iPhone as a webcam).">
 <link rel="canonical" href="https://erik1028.github.io/">
 <meta name="author" content="Erik1028">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Erik1028">
 <meta property="og:title" content="Apps for VR, VRChat, iPods and the desk around them">
-<meta property="og:description" content="OrbitOverlay, VR Gallery, Mixtape, Hexpad, Prisma, Flux and Focal: free Windows apps by Erik1028.">
+<meta property="og:description" content="OrbitOverlay, fbtcal, VR Gallery, Mixtape, Hexpad, Prisma, Flux and Focal: free Windows apps by Erik1028.">
 <meta property="og:image" content="https://erik1028.github.io/og.png">
 <meta property="og:url" content="https://erik1028.github.io/">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,9 +24,9 @@ try{var l=(location.hash.match(/^#look-(95|cyber|terminal)$/)||[])[1]||localStor
 <link rel="preload" href="fonts/permanent-marker.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* An index of the apps. Each card shows the thing itself (the watch over a VR floor, a wall of VRChat photos,
-   a hand-labelled tape, the stream dock with its own key pictures, Prisma's and Flux's own windows, a phone filming) in its own
-   app's accent; the page around them stays quiet. OrbitOverlay's card is twice as wide, so the seven fill
-   two rows of four. */
+   a hand-labelled tape, the stream dock with its own key pictures, Prisma's and Flux's own windows, fbtcal's SteamVR tab, a phone filming) in its own
+   app's accent; the page around them stays quiet. OrbitOverlay's card is twice as wide, so the eight fill
+   two rows of four and Focal starts a third. */
 @font-face{font-family:"Permanent Marker";src:url(fonts/permanent-marker.woff2) format("woff2");font-display:swap}
 :root{
   color-scheme:dark;
@@ -131,6 +131,11 @@ h2 a:focus-visible{outline:0}
 .v-flux img{width:104%;height:auto;max-width:none;margin:10% 0 0 9%;border-radius:10px;border:1px solid #24312c;box-shadow:0 18px 40px rgba(0,0,0,.6);
   transform:rotate(-3deg);transform-origin:0 0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .app:hover .v-flux img{transform:rotate(-3deg) translate(-4%,-3%)}
+/* fbtcal: its SteamVR dashboard tab, with made-up data */
+.v-fbtcal{background:linear-gradient(160deg,#1c1226,#0e0e10 70%);align-items:flex-start}
+.v-fbtcal img{width:104%;height:auto;max-width:none;margin:10% 0 0 9%;border-radius:8px;border:1px solid #2a2a30;box-shadow:0 18px 40px rgba(0,0,0,.6);
+  transform:rotate(-3deg);transform-origin:0 0;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.app:hover .v-fbtcal img{transform:rotate(-3deg) translate(-4%,-3%)}
 
 /* Focal: an iPhone sending its camera to the PC over Wi-Fi */
 .v-focal{background:radial-gradient(75% 65% at 50% 35%,#16303a,#0d1117 75%)}
@@ -158,7 +163,7 @@ h2 a:focus-visible{outline:0}
 .motion .app.done{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
 footer{margin-top:44px;color:var(--dim);font-size:14.5px}
 footer a{color:var(--dim)}
-@media (prefers-reduced-motion:reduce){h1,.by,.app{animation:none!important}.app,.v-orbit img,.v-gallery .wall,.v-flux img,.v-prisma img,.v-hexpad .key::after,.v-hexpad .knob{transition:none}
+@media (prefers-reduced-motion:reduce){h1,.by,.app{animation:none!important}.app,.v-orbit img,.v-gallery .wall,.v-flux img,.v-fbtcal img,.v-prisma img,.v-hexpad .key::after,.v-hexpad .knob{transition:none}
   .app:hover .reel,.app:focus-within .reel,.v-focal .wave{animation:none!important}}
 
 /* They work together: each link two app icons joined by a line in their two colours, a dot running along it */
@@ -199,6 +204,17 @@ footer a{color:var(--dim)}
 <span class="rel" data-repo="Erik1028/OrbitOverlay" title="Latest release"><i></i>v1.18.0 · 24 Oct 2026</span>
 <p>A SteamVR overlay: a watch on your wrist, your PC screens around you, and a VR keyboard.</p>
 <span class="links"><a href="https://erik1028.github.io/OrbitOverlay/">Website</a> · <a href="https://github.com/Erik1028/OrbitOverlay">GitHub</a></span>
+</div></div>
+</article>
+
+<article class="app" style="--acc:#a743e8">
+<div class="tb" aria-hidden="true"><img src="img/fbtcal.png" width="16" height="16" alt=""><b>fbtcal</b><span class="tbb"><i></i><i></i><i></i></span></div>
+<div class="visual v-fbtcal" aria-hidden="true"><img src="img/fbtcal-panel.webp" width="720" height="450" alt="" loading="lazy"></div>
+<div class="meta"><img src="img/fbtcal.png" width="48" height="48" alt=""><div>
+<h2><a href="https://erik1028.github.io/fbtcal/">fbtcal</a></h2>
+<span class="rel" data-repo="Erik1028/fbtcal" title="Latest release"><i></i>v1.0.0 · 29 Oct 2026</span>
+<p>VRChat full-body calibration without standing up: from bed, a chair or wherever you are. Made for SlimeVR.</p>
+<span class="links"><a href="https://erik1028.github.io/fbtcal/">Website</a> · <a href="https://github.com/Erik1028/fbtcal">GitHub</a></span>
 </div></div>
 </article>
 
